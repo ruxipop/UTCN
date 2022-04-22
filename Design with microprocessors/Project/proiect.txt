@@ -1,0 +1,355 @@
+#include <LiquidCrystal.h>
+#include "pitches.h"
+LiquidCrystal lcd (3, 4, 5, 6, 7, 8);
+int notes[] = {NOTE_C4, NOTE_D4, NOTE_E4, NOTE_F4, NOTE_G4};
+int pinButton[] = {A5, A4, A3};
+int pinLed[] = {12, 11, 10, 9};
+int state = 0;
+int menuState = 0;
+int pinB = 2;
+int pinAnalog = A2;
+int currentState = 0;
+const int STATE_IDLE = 0;
+const int STATE_START_GAME = 1;
+const int STATE_SHOW_LED = 2;
+const int STATE_READ = 3;
+const int STATE_VERIFY = 4;
+const int STATE_CORRECT = 5;
+const int STATE_AGAIN = 6;
+const int MAX_DIF = 8;
+int randomSec[MAX_DIF];
+int playerRead[MAX_DIF];
+int nextState = 0;
+int difCh = 1;
+int nrPress = 0;
+void setup() {
+  configLcd();
+  configPin();
+  currentState = STATE_IDLE;
+  nextState = currentState;
+}
+void lcdPrint() {
+  lcd.print("  Menu");
+}
+
+void loop() {
+  if (digitalRead(pinButton[0]) == LOW  ) {
+    lcd.clear();
+    lcd.print("Piano menu");
+    delay(2000);
+    lcd.clear();
+    playPiano();
+    delay(300);
+    lcdPrint();
+  }
+
+  if (digitalRead(pinButton[1]) == LOW) {
+    lcd.clear();
+    lcd.print("Music menu");
+    delay(2000);
+    lcd.clear();
+    delay(100);
+    lcdStart();
+    delay(300);
+    lcdPrint();
+  }
+
+  if (digitalRead(pinButton[2]) == LOW) {
+    lcd.clear();
+    lcd.print("Game menu");
+    delay(2000);
+    lcd.clear();
+    gameStart();
+    lcdPrint();
+  }
+}
+
+void configLcd() {
+  lcd.begin(16, 2);
+  lcd.display();
+  lcd.print("  Menu");
+}
+
+void configPin() {
+  for (int i = 0; i < 3; i++) {
+    pinMode(pinButton[i], INPUT_PULLUP);
+  }
+  for (int i = 0; i < 4; i++) {
+    pinMode(pinLed[i], OUTPUT);
+  }
+
+}
+//game menu
+void gameStart() {
+  delay(100);
+  while (digitalRead(pinButton[2]) == HIGH) {
+    switch (currentState) {
+      case STATE_IDLE:
+        for (int i = 5 ; i > 0; i--) {
+          lcd.print("Game Start in ");
+          lcd.print(i);
+          delay(1000);
+          lcd.clear();
+        }
+        lcd.setCursor(6, 0);
+        lcd.print("Start");
+        delay(1000);
+        lcd.clear();
+        nextState = STATE_START_GAME;
+        break;
+
+      case STATE_START_GAME:
+        generateRandom();
+        nextState = STATE_SHOW_LED;
+        break;
+
+      case STATE_SHOW_LED:
+        showRandom();
+        nextState = STATE_READ;
+        break;
+
+      case STATE_READ:
+        if (readOption() == 0) {
+          difCh = 1;
+          nextState = STATE_IDLE;
+          break;
+        }
+        nextState = STATE_VERIFY;
+        break;
+
+      case STATE_VERIFY:
+
+        if (isCorrect()) {
+
+          nextState = STATE_CORRECT;
+        }
+        else {
+
+          nextState = STATE_AGAIN;
+        }
+
+        break;
+
+      case STATE_CORRECT:
+
+        soundCorrect();
+        lcd.clear();
+        delay(500);
+        lcd.print("Next level");
+
+        difCh++;
+        if (difCh > MAX_DIF) {
+          lcd.clear();
+          lcd.print("You won");
+          delay(2000);
+          lcd.clear();
+          difCh = 1;
+          lcd.print("A new game start");
+          delay(2000);
+          lcd.clear();
+        }
+
+        nextState = STATE_START_GAME;
+        delay(1000);
+        lcd.clear();
+        delay(400);
+        break;
+
+      case STATE_AGAIN:
+        soundIncorrect();
+        lcd.clear();
+        lcd.print("Start again");
+        difCh = 1;
+        nextState = STATE_START_GAME;
+        delay(1000);
+        lcd.clear();
+        delay(400);
+        break;
+
+    }
+    currentState = nextState;
+  }
+
+  delay(300);
+
+}
+
+void soundCorrect() {
+  tone(pinB, 700, 100);
+  delay(100);
+  tone(pinB, 800, 100);
+  delay(100);
+  tone(pinB, 900, 100);
+  delay(100);
+  tone(pinB, 1000, 100);
+  delay(100);
+  tone(pinB, 1100, 100);
+  delay(100);
+  tone(pinB, 1200, 100);
+  delay(100);
+}
+
+void soundIncorrect() {
+  lcd.clear();
+  lcd.print("You Lose");
+  tone(pinB, 100, 1000);
+  delay(1000);
+}
+
+bool isCorrect() {
+  bool fel = true;
+  for (int i = 0; i < difCh; i++) {
+    if (playerRead[i] != randomSec[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+int readB(int state) {
+  if (state < 100) {
+    return 0;
+  }
+  else  if (state > 100 && state < 205) {
+    return 0;
+  }
+  else if (state > 205 && state < 410) {
+    digitalWrite(12, HIGH);
+    delay(300);
+    return 12;
+  }
+  else  if (state > 410 && state < 614) {
+    digitalWrite(11, HIGH);
+    delay(300);
+    return 11;
+  }
+  else if (state > 614 && state < 820) {
+    digitalWrite(10, HIGH);
+    delay(300);
+    return 10;
+  }
+  else  if (state > 820 && state < 1023) {
+    digitalWrite(9, HIGH);
+    delay(300);
+    return 9;
+
+  }
+}
+
+int readOption() {
+  nrPress = 0;
+  while (true) {
+    if (digitalRead(pinButton[2]) == LOW) {
+      return 0;
+    }
+    state = analogRead(pinAnalog);
+    lcd.clear();
+    int i = readB(state);
+    if (i != 0) {
+      playerRead[nrPress] = i;
+      digitalWrite(i, LOW);
+      nrPress++;
+    }
+
+    if (nrPress == difCh) {
+      lcd.clear();
+      return 1;
+      break;
+    }
+  }
+}
+
+void showRandom() {
+  for (int i = 0; i < difCh; i++) {
+    printLED(randomSec[i], true);
+  }
+}
+
+void printLED(int pin, bool cond) {
+  digitalWrite(pin, HIGH);
+  if (cond) {
+    delay(1000);
+    digitalWrite(pin, LOW);
+    delay(500);
+  }
+
+}
+
+void generateRandom() {
+  for (int i = 0; i < difCh; i++) {
+    randomSec[i] = rendomLed();
+  }
+}
+
+int rendomLed() {
+  return random(9, 13);
+}
+
+//play menu
+void playPiano() {
+  delay(100);
+  while (digitalRead(pinButton[0]) == HIGH) {
+    state = analogRead(pinAnalog);
+    while (state < 100 && digitalRead(pinButton[0]) == HIGH) {
+      state = analogRead(pinAnalog);
+      noTone(pinB);
+    }
+    while (state > 100 && state < 150 && digitalRead(pinButton[0]) == HIGH) {
+      state = analogRead(pinAnalog);
+      tone(pinB, notes[0]);
+    }  while (state > 150 && state < 250 && digitalRead(pinButton[0]) == HIGH) {
+      state = analogRead(pinAnalog);
+      tone(pinB, notes[1]);
+    }
+    while (state > 250 && state < 350 && digitalRead(pinButton[0]) == HIGH) {
+      state = analogRead(pinAnalog);
+      tone(pinB, notes[2]);
+    } while (state > 350 && state < 850 && digitalRead(pinButton[0]) == HIGH) {
+      state = analogRead(pinAnalog);
+      tone(pinB, notes[3]);
+    } while (state > 850 && state < 1023 && digitalRead(pinButton[0]) == HIGH) {
+      state = analogRead(pinAnalog);
+      tone(pinB, notes[4]);
+    }
+    noTone(pinB);
+  }
+}
+//music menu
+void lcdStart() {
+  delay(100);
+  while ( digitalRead(pinButton[1]) == HIGH) {
+    state = analogRead(A2);
+    if (state < 100) {
+      lcd.setCursor(0, 0);
+      lcd.print("Select a button");
+      lcd.setCursor(0, 1);
+      lcd.print("to play a song");
+      noTone(pinB);
+    }
+    if (state > 100 && state < 150) {
+      Song1();
+      lcd.clear();
+    }
+
+    else  if (state > 150 && state < 250) {
+      Song2();
+      lcd.clear();
+    }
+
+    else  if (state > 250 && state < 350) {
+      Song3();
+      lcd.clear();
+    }
+
+    else  if (state > 350 && state < 850) {
+      Song4();
+      lcd.clear();
+    }
+
+    else  if (state > 850 && state < 1023) {
+      Song5();
+      lcd.clear();
+    }
+  }
+  lcd.clear();
+}
