@@ -21,6 +21,22 @@
     </ul>
    </li>
        
+       
+       
+       
+          <li>:open_file_folder: Semester 4
+    <ul>
+      <li>
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Computer%20Architecture"> 
+          :clubs:  Computer Architecture
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Operating%20Systems"> 
+          :trollface:  Operating Systems
+        </a>
+      </li>
+       
   
   
 
