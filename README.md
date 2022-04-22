@@ -1,5 +1,5 @@
 # UTCN
-<ul>
+
    <li>:open_file_folder: Semester 2
     <ul>
       <li>
@@ -8,7 +8,7 @@
         </a>
       </li>
     </ul>
-  </li>
+   </li>
   
    
    <li>:open_file_folder: Semester 3
@@ -29,4 +29,4 @@
        
   
   
-   </ul>
+
