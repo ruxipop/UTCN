@@ -55,25 +55,16 @@
   <li>:open_file_folder: Semester 4
     <ul>
       <li>
-        <a href="https://github.com/Pufcorina/Database-Management-Systems">
-          :nut_and_bolt:  Database Management Systems
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Computer%20Architecture">
+          :nut_and_bolt:   Computer Architecture
       </li>
       <li>
-        <a href="https://github.com/Pufcorina/WebProgramming">
-          :newspaper:  Web Programming
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Operating%20Systems">
+          :newspaper:  Operating Systems
       </li>
       <li>
-        <a href="https://github.com/Pufcorina/Systems-for-Design-and-Implementation">
-          :zap:  Systems for Design and Implementation
-      </li>
-      <li>
-        <a href="https://github.com/Pufcorina/Artificial-Intelligence">
-          :ferris_wheel:  Artificial Intelligence
-      </li>
-      <li>
-        <a href="https://github.com/Pufcorina/Software-Engineering">
-          :ambulance:  Software Engineering
-        </a>
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Fundamental%20Programming%20Techniques">
+          :zap:  Fundamental Programming Techniques
       </li>
     </ul>
   </li>
