@@ -18,7 +18,7 @@
           :clubs:  Databases
         </a>
       </li>
-       
+          </ul>
       <li>
         <a href=" https://github.com/ruxipop/UTCN/tree/main/Fundamental%20Algorithms"> 
           :trollface:  Fundamental Algorithms
