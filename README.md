@@ -1,29 +1,21 @@
 # UTCN
 <ul>
-  
-  <li> :open_file_folder: Semester 2
-    <ul style="list-style-type:none">
-      <li> :small_blue_diamond:
-        <a href="https://github.com/ruxipop/UTCN/tree/main/Digital%20Systems%20Design"> Digital Systems Design </a>
+  <li>:open_file_folder: Semester 1
+    <ul>
+      <li>
+        <a href=""> 
+          :clubs:  Algebra 
+        </a>
       </li>
-          </ul>
-  </li>
-
-
-  
-    <li> :open_file_folder: Semester 3
-    <ul style="list-style-type:none">
-      <li> :small_blue_diamond:
-         <a href="https://github.com/ruxipop/UTCN/tree/main/Databases"> Databases </a>
+      <li>
+        <a href=""> 
+          :trollface:  Computational Logic 
+        </a>
       </li>
-                </ul>
-  </li>
-  
-    <li> :open_file_folder: Semester 4
-    </li>
-    <li> :open_file_folder: Semester 5
-    </li>
-    <li> :open_file_folder: Semester 6
-    </li>
-</ul>  
-  
+      <li>
+        <a href="> 
+          :snake:  Fundamental of Programming 
+        </a>
+      </li>
+    </ul>
+</ul>
