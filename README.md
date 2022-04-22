@@ -3,7 +3,7 @@
   <li>:open_file_folder: Semester 2
     <ul>
       <li>
-        <a href="https://github.com/ruxipop/UTCN/tree/main/Digital%20Systems%20Design/Project"> 
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Digital%20Systems%20Design"> 
           :clubs:  Digital Systems Design 
         </a>
       </li>
