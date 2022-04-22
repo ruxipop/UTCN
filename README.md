@@ -8,7 +8,7 @@
       </li>
       
   </li>
-    
+    </ul>
 
   
     <li> :open_file_folder: Semester 3
