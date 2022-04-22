@@ -22,10 +22,8 @@
    </li>
        
        
-       
-       
-          <li>:open_file_folder: Semester 4
-    <ul>
+    <li>:open_file_folder: Semester 4
+     <ul>
       <li>
         <a href="https://github.com/ruxipop/UTCN/tree/main/Computer%20Architecture"> 
           :clubs:  Computer Architecture
