@@ -1,0 +1,48 @@
+Ex1.
+grep $USER /etc/passwd
+
+Ex2.
+
+grep -v "text1" fisier.txt | grep -v "text2"
+
+Ex3.
+ls ./Desktop | wc -l
+ls -l ./Desktop/Flowers | grep  ^d | wc -l 
+
+Ex4.
+M-am inspirat din indrumator
+myscript.sh:
+FSUB= `find . -name  "*.c"` -- parcurge recursiv folderele
+for FNAME in *.c
+do 
+FSIZE=`wc -l $FNAME | cut -c 1,2` -- ca sa apara numai dimensiunea /nu si numele
+if test $FSIZE -gt 20 --daca dimensiunea (nr lini)  mai mare ca 20 afiseaza
+then
+echo $FNAME
+fi 
+done
+-----
+touch myscript.sh
+gedit myscript.sh & 
+bash myscript.sh
+
+
+Ex5.
+
+myscript.sh:
+if test $1="read" 
+then
+echo "READ"
+elsif test  $1="write" 
+then
+echo "WRITE"
+elsif test  $1="excute" 
+then
+echo "	EXECUTE"
+else 
+echo "Argument invalid"
+fi
+
+
+
+
