@@ -4,14 +4,10 @@
     <ul>
       <li>
         <a href=""> 
-          :clubs:  Algebra 
+          :clubs:  Digital Systems Design
         </a>
       </li>
-      <li>
-        <a href=""> 
-          :trollface:  Computational Logic 
-        </a>
-      </li>
+    
     </ul>
   </li>
   
