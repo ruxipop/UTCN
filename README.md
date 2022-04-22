@@ -17,23 +17,8 @@
         </a>
       </li>
       <li>
-        <a href="https://github.com/Pufcorina/Computer-Networks"> 
-          :outbox_tray:  Computer Networks 
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/Pufcorina/Databases"> 
-          :nut_and_bolt:  Databases 
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/Pufcorina/Functional-and-Logic-Programming"> 
-          :floppy_disk:  Functional and Logic Programming 
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/Pufcorina/Probability-and-Statistics"> 
-          :chart_with_upwards_trend:  Probability and Statistics
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Fundamental%20Algorithms"> 
+          :outbox_tray:  Fundamental Algorithms
         </a>
       </li>
     </ul>
