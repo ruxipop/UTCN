@@ -10,6 +10,7 @@
     </ul>
   </li>
   
+   
    <li>:open_file_folder: Semester 3
     <ul>
       <li>
@@ -17,14 +18,19 @@
           :clubs:  Databases
         </a>
       </li>
+       
       <li>
         <a href=" https://github.com/ruxipop/UTCN/tree/main/Fundamental%20Algorithms"> 
           :trollface:  Fundamental Algorithms
         </a>
       </li>
+       
     </ul>
   </li>
   
+   
+   
+   
    <li>:open_file_folder: Semester 4
     <ul>
       <li>
