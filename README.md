@@ -57,14 +57,17 @@
       <li>
         <a href="https://github.com/ruxipop/UTCN/tree/main/Computer%20Architecture">
           :nut_and_bolt:   Computer Architecture
+         </a>
       </li>
       <li>
         <a href="https://github.com/ruxipop/UTCN/tree/main/Operating%20Systems">
           :newspaper:  Operating Systems
+        </a>
       </li>
       <li>
         <a href="https://github.com/ruxipop/UTCN/tree/main/Fundamental%20Programming%20Techniques">
           :zap:  Fundamental Programming Techniques
+          </a>
       </li>
     </ul>
   </li>
