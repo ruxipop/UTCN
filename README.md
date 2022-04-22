@@ -12,8 +12,8 @@
   <li>:open_file_folder: Semester 3
     <ul>
       <li>
-        <a href="https://github.com/Pufcorina/Advanced-Methods-of-Programming"> 
-          :santa:  Advanced Methods of Programming 
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Databases"> 
+          :santa:  Databases
         </a>
       </li>
       <li>
