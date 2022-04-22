@@ -74,30 +74,26 @@
   <li>:open_file_folder: Semester 5
     <ul>
       <li> :musical_score:
-        <a href="https://github.com/Pufcorina/Audio-videoDataProcessing">
-          Audio-video Data Processing
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Design%20with%20microprocessors">
+         Design With Microprocessors
         </a>
       </li>
       <li> :pencil:
-        <a href="https://github.com/Pufcorina/FormalLanguagesAndCompilerDesign">
-          Formal Languages and Compiler Design
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Artificial%20Intelligence">
+          Artificial Intelligence
         </a>
       </li>
       <li> :chart_with_downwards_trend:
-        <a href="https://github.com/Pufcorina/UBB/tree/master/Semester5/Intelligent%20Methods%20for%20solving%20real-world%20problems">
-          Intelligent Methods for solving real-world problems
+        <a href=""https://github.com/ruxipop/UTCN/tree/main/Graphic%20processing">
+         Graphic Processing
         </a>
       </li>
       <li> :iphone:
-        <a href="https://github.com/Pufcorina/MobileProgramming">
-          Mobile Application Programming
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Structure%20Of%20Computer%20Systems">
+        Structure Of Computer Systems
         </a>
       </li>
-      <li> :black_joker:
-        <a href="https://github.com/Pufcorina/ParallelAndDistributedProgramming">
-          Parallel and Distributed Programming
-        </a>
-      </li>
+     
     </ul>
   </li>
   <li>:open_file_folder: Semester 6
