@@ -12,10 +12,5 @@
           :trollface:  Computational Logic 
         </a>
       </li>
-      <li>
-        <a href="> 
-          :snake:  Fundamental of Programming 
-        </a>
-      </li>
     </ul>
 </ul>
