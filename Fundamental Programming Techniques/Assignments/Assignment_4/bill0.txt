@@ -1,0 +1,5 @@
+Order details :
+Order id: 0
+ Order date:Thu May 20 12:44:08 BST 2021
+Products details :
+Total 0.0
