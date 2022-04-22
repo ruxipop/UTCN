@@ -18,13 +18,7 @@
           :clubs:  Databases
         </a>
       </li>
-       
-      
-       
-       
-       
-       
-           </ul>
+    </ul>
    </li>
        
   
