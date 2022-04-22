@@ -1,0 +1,65 @@
+\section{Personal contribution}
+
+% =============================================  a-b pruning in ABAgent ============================= 
+\subsection{Question 11 - Define and solve your own problem.}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+%%%%% PLEASE WRITE THE PROBLEM DEFINITION HERE %%%%%%%
+
+\textit{"In search.py, implement \textbf{IterativeDeepeningSearch(IDS) algorithm} to solve {\textbf{SearchProblem}} from searchAgents.py". }
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+
+% a se completa fisierul code/11_prop_problem.py
+\inputminted[linenos]{python}{code/11_prop_problem.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Am ales sa implementam iterativeDeepeningSearch, fiind un algoritm de cautare care genereaza solutia optima cu o abordare de tip DFS
+\item la linia 20, in loc de a folosi o stiva data de noi, am folosit stiva de la apelul functiei, rezolvarea fiind recursiva% in line 4 we raise an NotDefinied error to make the debugging procces easier
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+\item python pacman.py -l tinyMaze -p SearchAgent -a fn=ids
+\item python pacman.py -l smallMaze -p SearchAgent -a fn=ids
+    \item  python pacman.py -l mediumMaze -z .5 -p SearchAgent -a fn=ids
+\item python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=ids% exemplu -l tinyMaze -p SearchAgent -a fn=dfs
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\subsubsection{Personal observations and notes}
+Am urmat algoritmul de la curs.\newline
+Pe layout-ul tinyMaze se expandeaza 94 de noduri. \newline
+Pe layout-ul smallMaze se expandeaza 2295 noduri. \newline
+Pe layout-ul mediumMaze se expandeaza 29857 noduri. \newline
+Pe layout-ul bigMaze se expandeaza 119140 noduri. \newline \newline
+Algoritmul de cautare este: 
+\begin{itemize}
+\item  complet daca spatiul starilor este finit
+\end{itemize}
+\begin{itemize}
+\item  optim daca costul este constant intre noduri
+\item are complexitatea timpului exponentiala 
+\item are complexitatea spatiului liniara
+\end{itemize}
+
+% descrieti aici orice fel de probleme ati intampinat in timpul rezolvarii acestui task si modul cum in care le-ati solutionat
+
+\vspace{0.75cm}
+
+\subsection{References}
+

@@ -1,0 +1,146 @@
+\section{Adversarial search}
+
+% ============================================= Improve the ReflexAgent ============================= 
+\subsection{Question 8 - Improve the ReflexAgent}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+\textit{"Improve the ReflexAgent such that it selects a better action. Include in the score food locations and ghost locations. The layout testClassic should be solved more often."}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+
+% a se completa fisierul code/8_reflex_agent.py
+\inputminted[linenos]{python}{code/08_reflex_agent.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Am imbunatatit ReflexAgent altfel incat sa returneze o actiune mai buna.Am mai adaugat la score si distanta cea mai mica dintre pacman si mancare ,precum si  dintre pacman si o fantoma .Aceaste distante le-am calculatat cu distanta euclidiana .Ca si distante initiale am luat min-food-distance=-1  deoarece pacman se poate afla oriunde fata de mancare ,si distance-to-ghost=1 deoarece pacman trebuie sa se afle la cel putin la  o distanta fata de fantoma; nu poate sa fie 0 ca atunci ar fi pe aceiasi pozitie si l-ar manca.
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item  python3 pacman.py -p ReflexAgent -l testClassic
+\item python3 pacman.py --frameTime 0 -p ReflexAgent -k 4 -l mediumClassic
+\item python3 autograder.py -q q1
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} Test your agent on the openClassic layout. Given a number of 10 consecutive tests, how many types did your agent win? What is your average score (points)?
+
+\textbf{A1:}Pacman a castigat 8 din cele 10 teste  ,si a pierdut de 2 ori .Average score pentru cele 10 teste este 1010.
+
+\subsubsection{Personal observations and notes}
+Am intaminat o singura problema , nu stiam cum sa aflu pozitia fantomei din lista de fantome,dar dupa am aflat ca exista o metoda implementata pentru  asa ceva.
+In cele 10 incercari, pacman nu a mancat acea bucata de mancare  care ar fi speriat fantoma.
+
+\vspace{0.75cm}
+
+% ============================================= H-Minimax algorithm ============================= 
+\subsection{Question 9 - H-Minimax algorithm}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+\textit{" Implement H-Minimax algorithm in MinimaxAgentclass from multiAgents.py. Since it can be more  than one ghost, for each max layer there are one ormore min layers."}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+
+% a se completa fisierul code/9_h_minimax.py
+\inputminted[linenos]{python}{code/09_h_minimax.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Pentru aceasta intrebare a trebuit sa implementez algoritmul Minimax .Am urmat cu exactitate pseudocodul din laborator ,cel pentru h-minimax.Asftel am creat o functie auxiliara care sa verifice daca se termina apelul lui h-minimax.Daca agentul curent este pacman  se determina maxim ul,iar daca agentul este o fantoma se determina minimul.Mai multe exeplicati se pot observa in comentarile marcate pe cod.
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+   \item  python pacman.py -p MinimaxAgent -l minimaxClassic -a depth=1
+\item python pacman.py -p MinimaxAgent -l trappedClassic -a depth=3
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} Test Pacman on trappedClassic layout and try to explain its behaviour. Why Pacman rushes to the ghost?
+
+\textbf{A1:} In aceasta situatie pacman, decide sa mearga spre fantoma din dreapta  desi va fi mancat ,deoarece am ales ca si depth=4 ,si isi da seama ca daca o va lua spre stanga va fi mancat de fantoma albastra (deoarece stie ca va fi acolo) ,dar mergand spre dreapta se gandeste ca poate va reusi sa scape de ambele .Mai bine spus ,pacman alege raul cel mai mic in aceasta situatie .
+
+
+\subsubsection{Personal observations and notes}
+La inceput nu intelesesem ce simbolizeaza depth ,dar am incercat sa analizez testele din proiect ,si am descoperit dupa
+
+
+\vspace{0.75cm}
+
+% =============================================  a-b pruning in ABAgent ============================= 
+\subsection{Question 10 -  Use $\alpha - \beta$ pruning in AlphaBetaAgent}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+\textit{" Use alpha-beta prunning in \textbf{AlphaBetaAgent} from multiagents.py for a more efficient exploration of minimax tree."}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+
+% a se completa fisierul code/10_ab_prunning.py
+\inputminted[linenos]{python}{code/10_ab_prunning.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Acest algortim este o varianta imbunatatita a lui h-minimax, prin urmare nu difera foarte mult ,decat prin prezenta a doi parametri in plus (alfa si beta),alfa simbolizand cea mai mare valoare(cea mai buna valoare din punct de vedere a MAX),iar beta cea mai mica valoare(cea mai buna valoarea din punct de vedere a MIN).Pentru fiecare fantoma noua se compora valoarea data de min-value cu alfa si daca este mai mare se interschimba valoarea lui alpha.Mai multe informatii se gasesc in comentarile de pe cod.
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item   python3 pacman.py -p AlphaBetaAgent -a depth=3 -l smallClassic
+\item python autograder.py -q q3
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} Test your implementation with autograder \textbf{python autograder.py} for Question 3. What are your results?
+
+\textbf{A1:} Algoritmul trece de testele pe graf,iar pentru testul facut pe lumea pacman va rezulta un Average Score egal cu 84 si va fi mancat de o fantoma. Question q3: 5/5
+
+
+\subsubsection{Personal observations and notes}
+In implementarea acestui algoritm nu am intampinat dificultati ,deoarece este foarte asemanator cu h-minimax ,dupa cum se poate observa ,ca l-am si implementat foarte asemanator.
+
+\vspace{0.75cm}
+
+\subsection{References}

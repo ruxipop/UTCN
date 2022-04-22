@@ -1,0 +1,60 @@
+ \section{Introducere}
+
+Pentru realizarea acestui proiect au fost nevoie de cunostințe legate de planificarea unei probleme și găsirea pașilor care duc la un scop bine stabilit.
+Astfel am folosit limbajul PDDL, care generează toate stările unei probleme, ce are un domeniu unic.
+\\ 
+
+Componentele unei sarcini de planificare în PDDL sunt:
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Objects = lucruri din lumea reală care ne interesează
+    
+    \item  Predicates = proprietăți ale obiectelor care ne interesează
+    \item Initial state  = starea lumii în care începem
+    \item Goal specification = lucruri care vrem să fie adevărate
+    \item Actions/Operators =  modalități de schimbare a stării lumii
+\end{itemize}
+
+O problemă de planificare este creată prin asocierea unei descrieri de domeniu cu o descriere a problemei. Condițiile pre și post ale acțiunii sunt exprimate ca propoziții logice construite din predicate și termeni de argumente și conectivități logice.
+\newline
+\newline
+Sarcinile de planificare specificate în PDDL sunt separate în două fișiere diferite:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Fișier de domeniu care conține predicatele și acțiunile
+       \item Fișier cu probleme care conține obiectele, starea inițială și specificația goal-ului
+    
+\end{itemize}
+
+Structura fișierului de domeniu este următoarea:
+\bigskip
+\\
+
+(define (domain <domain  name> )
+
+ (:predicates <predicate>)
+
+         (:action  <prima actiune>)
+      
+         .......................
+      
+         (:action  <ultima actiune>)
+)
+
+\bigskip
+
+Structura fișierului de probleme este următoarea:
+\bigskip
+\\
+
+(define (problem <problem name>)
+
+        (:domain <domain name>)
+        
+        (:objects  <obiecte>)
+    
+        (:init <starea initiala>)
+     
+        (:goal <starea finala>)
+)

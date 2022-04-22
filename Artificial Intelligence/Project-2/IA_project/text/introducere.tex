@@ -1,0 +1,95 @@
+ \section{Introducere}
+
+ Implementarea proiectului se bazează pe logica propozitională a predicatelor. Logica propozițională se ocupă de propoziții (care pot fi false sau adevărate) și de relațiile dintre propoziții.
+ 
+ Există 6 tipuri de simboluri în logica predicatelor:
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Predicate: p, q, r...
+    \item Constante: a, b, c, mașina...
+    \item Variabile: x, y, z...
+    \item Conective: |, ->, <->, -
+    \item Paranteze: (,)
+    \item Cuantificatori: forall, exists...
+\end{itemize}
+
+
+O propoziție atomică este una al cărei adevăr sau falsitate nu depinde de adevărul sau falsitatea oricărei alte propoziții.
+
+   Următoarele propoziții sunt adevărate:
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Simbolurile True și False  sunt propoziții atomice
+    
+    \item  Simbolurile P1, P2 etc. sunt propoziții atomice
+    \item Dacă S este o propoziție => ¬S este o propoziție (negation)
+    \item  Dacă S1 și S2 sunt propoziții => S1 &  S2  este o propoziție (conjunction)
+    
+    \item Dacă S1 și S2 sunt propoziții => S1 | S2 este o propoziție (disjunction)
+    \item Dacă S1 și S2 sunt propoziții => S1 -> S2 este o propoziție (implication)
+    \item Dacă S1 și S2 sunt propoziții => S1 <-> S2 este o propoziție (biconditional)
+\end{itemize}
+
+Tabele de adevăr:
+
+1. AND                      
+\\
+
+\begin{left}
+    \begin{tabular}{c |c| c}
+       p  & q & p and q  \\
+        \hline
+       F  & F & F \\
+        F  & T & F \\
+         T  & F & F \\
+          T  & T & T \\
+    \end{tabular}
+\end{left}
+\\
+
+2.OR
+\\
+
+\begin{left}
+    \begin{tabular}{c |c| c}
+       p  & q & p or q  \\
+        \hline
+       F  & F & F \\
+        F  & T & T \\
+         T  & F & T \\
+          T  & T & T \\
+    \end{tabular}
+\end{left}
+\\
+\\
+
+3.If ... then
+\\
+
+\begin{left}
+    \begin{tabular}{c |c| c}
+   
+       p  & q & p -> q  \\
+        \hline
+       F  & F & T \\
+        F  & T & T \\
+         T  & F & F \\
+          T  & T & T \\
+    \end{tabular}
+\end{left}
+\\
+\\
+
+3.Iff
+\\
+
+\begin{left}
+    \begin{tabular}{c |c| c}
+       p  & q & p <-> q  \\
+        \hline
+       F  & F & T \\
+        F  & T & F \\
+         T  & F & F \\
+          T  & T & T \\
+    \end{tabular}
+\end{left}

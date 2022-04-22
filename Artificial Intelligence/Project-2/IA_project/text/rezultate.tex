@@ -1,0 +1,62 @@
+ \section{Rezultate}
+ 
+ \subsection{Intersecție nedirijată}
+ \textbf{Demonstrație:}
+ 
+ Pentru a ilustra corectitudinea acestui cod, vom începe prin a demonstra un caz particular: cel în care goal-ul este trace3(M4). Asta înseamnă că mașina M4 este a treia care trece în intersecție.
+ 	Se știe că:
+ 	
+ 	 \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Mașina M1 nu semnalizează. Rezultă că M1 nu semnalizează nici la stânga, nici la dreapta, deci merge în față.  (1)
+    \item Mașina M2 semnalizează dreapta. Rezultă că M2 merge la dreapta și are prima dată prioritate. (2)
+    \item Mașina M4 nu semnalizează. Analog cu (1), M4 merge în față. (3)
+    \item În dreapta lui M1 se află M2. (4)
+    \item În dreapta lui M4 se află M1. (5)
+    \item Prioritatea este unică (nu poți avea două mașini cu aceeași prioritate). (6)
+    \item Într-o intersecție nedirijată se aplică prioritatea de dreapta. (7)
+\end{itemize}
+
+Din (7) rezultă că următoarea mașină care o să aibă prioritate o să fie mașina care are în dreapta mașina care a avut prima dată prioritate (2) și care merge în față (1). Deci va trece mașina M1 (4) și M1 devine prioritar pentru restul mașinilor (8) (deoarece M2 a trecut și (6)).
+
+Din (7) rezultă că următoarea mașină care o să aibă prioritate o să fie mașina care are în dreapta mașina care a avut a doua oară prioritate (8) și care merge în față (3). Deci va trece mașina M4 (5) (deoarece M2 și M1 au trecut și (6)).
+
+	Astfel, am demonstrat că a treia mașină care trece este M4.
+	
+	
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/aut.out}	
+ \subsection{Intersecție dirijată}
+ 
+ Pentru a ilustra corectitudinea acestui cod, vom începe prin a demonstra un caz particular: cel în care goal-ul este trace3(M3). Asta înseamnă că mașina M3 este a treia care trece în intersecție. Se știe că:
+ 
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item Mașina M1 semnalizează la stânga. Rezultă că M1 merge la stânga. (1)
+    \item Mașina M2 nu semnalizează. Rezultă că M2 nu semnalizează nici la stânga, nici la dreapta, deci merge în față. (2)
+    \item Mașina M3 nu semnalizează. Analog cu (2), M3 merge în față. (3)
+    \item Mașina M4 semnalizează la stânga. Rezultă că M1 merge la stânga. (4)
+    \item Semnul de la intrarea în intersecție a lui M1 este de cedează trecerea. (5)
+    \item Semnul de la intrarea în intersecție a lui M2 este de drum cu prioritate. (6)
+    \item Semnul de la intrarea în intersecție a lui M3 este stop. (7)
+    \item Semnul de la intrarea în intersecție a lui M4 este de drum cu prioritate. (8)
+    \item Prima dată trec mașinile de pe drumul cu prioritate (9)
+    
+\end{itemize}
+
+Din (6) și (8) rezultă că mașinile M2 și M4 sunt pe aceeasi stradă cu prioritate. (10)
+
+Din (5) și (7) rezultă că mașinile M1 și M3 sunt pe aceeași stradă fără prioritate. (11)
+
+Din (9), (10), faptul că mașina M2 merge in față (2) și mașina M4 merge la stânga (4), rezultă că M2 are prioritate și trece primul, iar M4 trece al doilea.
+
+Din (9), (11), faptul că mașina M3 merge în față (3) și mașina M1 merge la stânga (1), rezultă că M3 trece al treilea și M1 ultimul. 
+
+Astfel, am demonstrat că a treia mașină care trece este M3.
+
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/aut_dir.out}	

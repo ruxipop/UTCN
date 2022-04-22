@@ -1,0 +1,89 @@
+% Saved by Prover9-Mace4 Version 0.5, December 2007.
+
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(max_seconds, 60).
+end_if.
+
+formulas(assumptions).
+
+% Avem patru masini intr-o intersectie nedirijata: M1, M2, M3, M4.
+% Intersectia e bazata pe desenul din cerinta.
+% Cele doua strazi sunt cu dublu sens.
+% M1 nu semnalizeaza si merge in fata.
+% M2 semnalizeaza dreapta.
+% M3 semnalizeaza stanga.
+% M4 nu semnalizeaza si merge in fata.
+% M1 se afla in dreapta lui M4, M2 se afla in dreapta lui M1, M3 se afla in dreapta lui M2, M4 se afla in 
+% dreapta lui M3.
+
+% Vrem sa determinam daca trece M2 primul, M1 al doilea, M4 al treilea si M3 ultimul.
+
+% domain size 4 : {M1, M2, M3, M4}
+
+% constant: M1, M2, M3, M4
+% predicate: semnalizeaza(x): masina x semnalizeaza
+% predicate: semnalizeaza_st(x): masina x semnalizeaza stanga
+% predicate: semnalizeaza_dr(x): masina x semnalizeaza dreapta
+% predicate: fata(x): masina x merge in fata
+% predicate: dreapta(x): masina x merge in dreapta
+% predicate: stanga(x): masina x merge in stanga
+% predicate: in_dreapta(x, y): masina y se afla in dreapta lui x
+% predicate: prioritate1(x): masina x are prima prioritate
+% predicate: prioritate2(x): masina x are prioritate dupa ce trece prima masina
+% predicate: prioritate3(x): masina x are prioritate dupa ce trece prima si a doua masina
+% predicate: prioritate4(x): masina x are prioritate dupa ce trece prima, a doua si a treia masina
+% predicate: trece1(x): masina x trece prima
+% predicate: trece2(x): masina x trece a doua
+% predicate: trece3(x): masina x trece a treia
+% predicate: trece4(x): masina x trece a patra
+
+-semnalizeaza_st(x) & -semnalizeaza_dr(x) -> fata(x).
+semnalizeaza_dr(x) -> dreapta(x) & prioritate1(x).
+semnalizeaza_st(x) -> stanga(x).
+-semnalizeaza(x) -> -semnalizeaza_st(x) & -semnalizeaza_dr(x). 
+
+-semnalizeaza(M1).
+semnalizeaza_dr(M2).
+semnalizeaza_st(M3).
+-semnalizeaza(M4).
+
+in_dreapta(M1, M2).
+in_dreapta(M2, M3).
+in_dreapta(M3, M4).
+in_dreapta(M4, M1).
+
+prioritate1(x) -> -prioritate2(x) & -prioritate3(x) & -prioritate4(x).
+prioritate2(x) -> -prioritate1(x) & -prioritate3(x) & -prioritate4(x).
+prioritate3(x) -> -prioritate1(x) & -prioritate2(x) & -prioritate4(x).
+prioritate4(x) -> -prioritate1(x) & -prioritate2(x) & -prioritate3(x).
+
+% Masina M2 merge in dreapta si are prima prioritate
+
+dreapta(x) & prioritate1(x) -> trece1(x) & -trece2(x) & -trece3(x) & -trece4(x).
+
+% Masina M1 a avut in dreapta o masina care are prioritate si vrea s-o ia in fata
+
+fata(x) & in_dreapta(x, y) & prioritate1(y) -> prioritate2(x) & -trece1(x) & trece2(x) & -trece3(x) & -trece4(x).
+
+% Masina M4 a avut in dreapta o masina care are prioritate si vrea s-o ia in fata
+
+fata(x) & in_dreapta(x, y) & prioritate2(y) -> prioritate3(x) & -trece1(x) & -trece2(x) & trece3(x) & -trece4(x).
+
+% Masina M3 a avut in dreapta o masina care are prioritate si vrea s-o ia in stanga
+
+stanga(x) & in_dreapta(x, y) & prioritate3(y) -> prioritate4(x) & -trece1(x) & -trece2(x) & -trece3(x) & trece4(x).
+
+end_of_list.
+
+formulas(goals).
+
+trece3(M4).
+
+end_of_list.
+

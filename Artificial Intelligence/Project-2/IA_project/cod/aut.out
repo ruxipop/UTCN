@@ -1,0 +1,50 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 19004 was started by biank on Bianca-PC,
+Thu Dec  2 17:25:44 2021
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.08) seconds.
+% Length of proof is 30.
+% Level of proof is 6.
+% Maximum clause weight is 4.
+% Given clauses 6.
+
+1 -semnalizeaza_st(x) & -semnalizeaza_dr(x) -> fata(x) # label(non_clause).  [assumption].
+2 semnalizeaza_dr(x) -> dreapta(x) & prioritate1(x) # label(non_clause).  [assumption].
+4 -semnalizeaza(x) -> -semnalizeaza_st(x) & -semnalizeaza_dr(x) # label(non_clause).  [assumption].
+10 fata(x) & in_dreapta(x,y) & prioritate1(y) -> prioritate2(x) & -trece1(x) & trece2(x) & -trece3(x) & -trece4(x) # label(non_clause).  [assumption].
+11 fata(x) & in_dreapta(x,y) & prioritate2(y) -> prioritate3(x) & -trece1(x) & -trece2(x) & trece3(x) & -trece4(x) # label(non_clause).  [assumption].
+13 trece3(M4) # label(non_clause) # label(goal).  [goal].
+15 semnalizeaza_st(x) | semnalizeaza_dr(x) | fata(x).  [clausify(1)].
+16 semnalizeaza(x) | -semnalizeaza_st(x).  [clausify(4)].
+18 semnalizeaza_dr(M2).  [assumption].
+20 -semnalizeaza_dr(x) | prioritate1(x).  [clausify(2)].
+21 semnalizeaza(x) | -semnalizeaza_dr(x).  [clausify(4)].
+23 semnalizeaza(x) | semnalizeaza_dr(x) | fata(x).  [resolve(16,b,15,a)].
+24 -fata(x) | -in_dreapta(x,y) | -prioritate1(y) | prioritate2(x).  [clausify(10)].
+25 in_dreapta(M1,M2).  [assumption].
+28 in_dreapta(M4,M1).  [assumption].
+36 -fata(x) | -in_dreapta(x,y) | -prioritate2(y) | trece3(x).  [clausify(11)].
+43 prioritate1(M2).  [resolve(18,a,20,a)].
+56 -fata(M1) | -prioritate1(M2) | prioritate2(M1).  [resolve(24,b,25,a)].
+75 -fata(M1) | prioritate2(M1).  [resolve(56,b,43,a)].
+95 -fata(M4) | -prioritate2(M1) | trece3(M4).  [resolve(36,b,28,a)].
+145 -fata(M1) | -fata(M4) | trece3(M4).  [resolve(75,b,95,b)].
+146 -trece3(M4).  [deny(13)].
+252 -semnalizeaza(M1).  [assumption].
+253 -semnalizeaza(M4).  [assumption].
+258 semnalizeaza(x) | fata(x) | semnalizeaza(x).  [resolve(23,b,21,b)].
+259 semnalizeaza(x) | fata(x).  [copy(258),merge(c)].
+263 -fata(M1) | -fata(M4).  [resolve(145,c,146,a)].
+268 fata(M4).  [resolve(259,a,253,a)].
+269 fata(M1).  [resolve(259,a,252,a)].
+270 $F.  [back_unit_del(263),unit_del(a,269),unit_del(b,268)].
+
+============================== end of proof ==========================

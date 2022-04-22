@@ -1,0 +1,46 @@
+============================== prooftrans ============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 16980 was started by biank on Bianca-PC,
+Thu Dec  2 19:25:18 2021
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.01 (+ 0.05) seconds.
+% Length of proof is 26.
+% Level of proof is 6.
+% Maximum clause weight is 7.
+% Given clauses 23.
+
+1 -semnalizeaza_st(x) & -semnalizeaza_dr(x) -> fata(x) # label(non_clause).  [assumption].
+3 semnalizeaza_st(x) -> stanga(x) # label(non_clause).  [assumption].
+4 -semnalizeaza(x) -> -semnalizeaza_st(x) & -semnalizeaza_dr(x) # label(non_clause).  [assumption].
+6 semn(x,cedeaza) & semn(y,stop) | semn(x,stop) & semn(y,cedeaza) -> pe_aceeasi_strada(x,y,fara_prioritate) # label(non_clause).  [assumption].
+9 pe_aceeasi_strada(x,y,fara_prioritate) & fata(x) & stanga(y) -> -trece1(x) & -trece2(x) & trece3(x) & -trece4(x) # label(non_clause).  [assumption].
+11 trece3(M3) # label(non_clause) # label(goal).  [goal].
+12 -semnalizeaza_st(x) | stanga(x).  [clausify(3)].
+13 semnalizeaza_st(x) | semnalizeaza_dr(x) | fata(x).  [clausify(1)].
+14 semnalizeaza(x) | -semnalizeaza_st(x).  [clausify(4)].
+15 semnalizeaza_st(M1).  [assumption].
+19 semnalizeaza(x) | -semnalizeaza_dr(x).  [clausify(4)].
+20 semnalizeaza(x) | semnalizeaza_dr(x) | fata(x).  [resolve(14,b,13,a)].
+24 -semn(x,stop) | -semn(y,cedeaza) | pe_aceeasi_strada(x,y,fara_prioritate).  [clausify(6)].
+34 -pe_aceeasi_strada(x,y,fara_prioritate) | -fata(x) | -stanga(y) | trece3(x).  [clausify(9)].
+41 -trece3(M3).  [deny(11)].
+44 -fata(x) | -stanga(y) | trece3(x) | -semn(x,stop) | -semn(y,cedeaza).  [resolve(34,a,24,c)].
+66 -semnalizeaza(M3).  [assumption].
+67 semn(M1,cedeaza).  [assumption].
+69 semn(M3,stop).  [assumption].
+71 stanga(M1).  [resolve(15,a,12,a)].
+76 semnalizeaza(x) | fata(x) | semnalizeaza(x).  [resolve(20,b,19,b)].
+77 semnalizeaza(x) | fata(x).  [copy(76),merge(c)].
+81 -fata(M3) | -stanga(x) | -semn(M3,stop) | -semn(x,cedeaza).  [resolve(44,c,41,a)].
+82 -fata(M3) | -stanga(x) | -semn(x,cedeaza).  [copy(81),unit_del(c,69)].
+118 -fata(M3).  [resolve(82,c,67,a),unit_del(b,71)].
+146 $F.  [resolve(118,a,77,b),unit_del(a,66)].
+
+============================== end of proof ==========================

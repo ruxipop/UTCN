@@ -1,0 +1,208 @@
+\section{Uninformed search}
+
+% ============================================= DFS ============================================= 
+\subsection{Question 1 - Depth-first search}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+
+\textit{"In search.py, implement \textbf{Depth-First search(DFS) algorithm} in  function \textit{depthFirstSearch}. Don’t  forget that DFS graph search is graph-search with the frontier as a LIFO queue(Stack)."}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+\inputminted[linenos]{python}{code/01_dfs.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item la linia 7 declaram frontiera ca o stiva
+    \item la linia 18 si 48 ne folosim de un tip creat de noi, CustomNode, pentru a retine starea, actiunea, costul si parintele unui succesor
+    \item la linia 19 se observa ca parintele pozitiei de start este (-1, -1)
+    \item la linia 39 se observa ca solutia este construita pe parcursul algoritmului prin adaugarea actiunii nodului curent in lista solutiei
+    \item la linia 71 se observa functia doesStackHaveThisItem pe care o apelam in acest algoritm
+    % in line 4 we raise an NotDefinied error to make the debugging procces easier
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item python pacman.py -l tinyMaze -p SearchAgent
+    \item python pacman.py -l smallMaze -p SearchAgent
+    \item python pacman.py -l mediumMaze -p SearchAgent
+    \item python pacman.py -l bigMaze -z .5 -p SearchAgent
+      % exemplu -l tinyMaze -p SearchAgent -a fn=dfs
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} Is the found solution optimal? Explain your answer.
+
+
+\textbf{A1:} Nu este o solutie optima pentru rezolvarea problemei de cautare deoarece este un algoritm DFS, care e mai rapid decat alti algoritmi, dar nu garanteaza solutia optima. % scrieti raspunsul acestei intrebari si stergeti \newline, acesta ar trebui sa aiba maxim 100 de cuvinte
+
+
+\textbf{Q2:} Run\textit{ autograder python autograder.py} and write the points for Question 1.
+
+
+\textbf{A2:} Question q1: 4/4 
+
+ % scrieti raspunsul acestei intrebari si stergeti \newline, acesta ar trebui sa aiba maxim 100 de cuvinte
+
+
+\subsubsection{Personal observations and notes}
+Pentru a verifica daca succesorul unui nod este deja in frontiera,
+am creat o functie numita doesStackHaveThisItem (linia 74), care returneaza True daca a gasit nodul in frontiera si False daca nu l-a gasit.\newline
+Pe layout-ul tinyMaze se expandeaza 16 de noduri. \newline
+Pe layout-ul smallMaze se expandeaza 59 noduri. \newline
+Pe layout-ul mediumMaze se expandeaza 146 noduri. \newline
+Pe layout-ul bigMaze se expandeaza 391 noduri. \newline \newline
+Algoritmul de cautare: 
+\begin{itemize}
+\item  nu este complet
+\item  nu este optim
+\item are complexitatea timpului exponentiala 
+\item are complexitatea spatiului liniara
+% descrieti aici orice fel de probleme ati intampinat in timpul rezolvarii acestui task si modul in care le-ati solutionat
+
+\vspace{0.75cm}
+
+% ============================================= BFS ============================================= 
+\subsection{Question 2 - Breadth-first search}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented:\newline
+
+
+\textit{"In \textbf{search.py}, implement the \textbf{Breadth-First search} algorithm in function \textit{breadthFirstSearch}."}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \newline
+
+
+\textbf{Code:}
+% a se completa fisierul code/bfs.py
+\inputminted[linenos]{python}{code/02_bfs.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item la linia 7 declaram frontiera ca o coada
+    \item la linia 14 si 30 ne folosim de o structura de date de tip CurrentNode care retine starea, actiunea, costul si parintele unui nod
+    \item la linia 32, deoarece nu am pus starea initiala in exploredList, verificam ca nodul succesor sa nu fie nodul de start
+    \item la linia 52 se observa ca am parcurs exploredList in ordine inversa, pentru ca sa se realizeze comparatia dintre list si exploredList cat mai repede
+    \item la linia 63 am declarat functia doesQueueHaveThisItem pe care o apelam in algoritm % in line 4 we raise an NotDefinied error to make the debugging procces easier
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item python pacman.py -l tinyMaze -p SearchAgent -a fn=bfs
+    \item python pacman.py -l smallMaze -p SearchAgent -a fn=bfs
+    \item python pacman.py -l mediumMaze -p SearchAgent -a
+    fn=bfs
+    \item python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=bfs %exemplu -l tinyMaze -p SearchAgent -a fn=dfs
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} Is the found solution optimal? Explain your answer. 
+
+
+\textbf{A1:} Da, solutia este optima pentru o problema de cautare, datorita modului de functionare a BFS-ului (cautarea in latime), cu toate ca expandeaza foarte multe noduri si este mai incet decat alti algoritmi de cautare. % scrieti raspunsul acestei intrebari si stergeti \newline, acesta ar trebui sa aiba maxim 100 de cuvinte
+
+
+\textbf{Q2:} Run autograder \textit{python autograder.py} and write the points for Question 2.
+
+
+\textbf{A2:} Question q2: 4/4 % scrieti raspunsul acestei intrebari si stergeti \newline, acesta ar trebui sa aiba maxim 100 de cuvinte
+
+
+\subsubsection{Personal observations and notes}
+Pentru a verifica daca un nod se afla in frontiera am creat o functie numita doesQueueHaveThisItem care returneaza True daca gaseste nodul in coada si False daca nu-l gaseste. \newline
+Pentru a grabi gasirea solutiei, am ales sa punem in acelasi timp succesorii in frontiera si in lista de explorat. \newline
+Pe layout-ul tinyMaze se expandeaza 15 de noduri. \newline
+Pe layout-ul smallMaze se expandeaza 92 noduri. \newline
+Pe layout-ul mediumMaze se expandeaza 269 noduri. \newline
+Pe layout-ul bigMaze se expandeaza 620 noduri. \newline \newline
+Algoritmul de cautare este: 
+\begin{itemize}
+\item complet daca spatiul starilor este finit
+\item optim daca costul este constant intre noduri
+\item are complexitatea timpului exponentiala 
+\item are complexitatea spatiului exponentiala
+% descrieti aici orice fel de probleme ati intampinat in timpul rezolvarii acestui task si modul cum in care le-ati solutionat
+
+\vspace{0.75cm}
+
+
+% ============================================= UCS ============================================= 
+\subsection{Question 3 - Uniform-cost search}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented:\newline
+
+\textit{"In search.py,  implement  \textbf{Uniform-cost graph search} algorithm  in \textit{uniformCostSearchfunction}"}
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \newline
+
+
+\textbf{Code:}
+% a se completa fisierul code/ucs.py
+\inputminted[linenos]{python}{code/03_ucs.py}
+
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item % in line 4 we raise an NotDefinied error to make the debugging procces easier
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item  %exemplu -l tinyMaze -p SearchAgent -a fn=dfs
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline 
+
+\textbf{Q1:} Compare the results to the ones obtained with DFS. Are the solutions different? Is the number of extended (explored) states smaller? Explain your answer. 
+
+\textbf{A1:} \newline % scrieti raspunsul acestei intrebari inainte de \newline, acesta ar trebui sa aiba maxim 100 de cuvinte
+
+
+\textbf{Q2:} Consider that some positions are more desirable than others. This can be modeled by a cost function which sets different values for the actions of stepping into positions. Identify in \textbf{searchAgents.py} the description of agents StayEastSearchAgent and StayWestSearchAgent and analyze the cost function. Why the cost .5 ** x for stepping into (x,y) is associated to StayWestAgen. 
+
+\textbf{A2:} \newline % scrieti raspunsul acestei intrebari inainte de \newline, acesta ar trebui sa aiba maxim 100 de cuvinte
+
+
+\textbf{Q3:} Run autograder \textit{python autograder.py} and write the points for Question 3.
+
+\textbf{A3:} \newline % a se completa aici cu rezultatul din autograder
+
+\subsubsection{Personal observations and notes}
+% descrieti aici orice fel de probleme ati intampinat in timpul rezolvarii acestui task si modul cum in care le-ati solutionat
+\vspace{0.75cm}
+
+\subsection{References}

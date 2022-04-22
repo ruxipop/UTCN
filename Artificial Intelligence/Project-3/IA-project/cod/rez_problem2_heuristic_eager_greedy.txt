@@ -1,0 +1,24 @@
+[t=0.0119057s, 10100 KB] Actual search time: 0.00332748s
+cumparare-ingredient1 branza1 (2)
+cumparare-ingredient2 masline1 (1)
+cumparare-ingredient3 salam (1)
+cumparare-ingredient4 ciuperci (1)
+start_reteta branza1 masline1 ciuperci salam pizza (0)
+amestec_ingrediente branza1 masline1 ciuperci salam aluat pizza (0)
+incalzire_cuptor cuptor aluat pizza (0)
+gata_final cuptor aluat pizza (0)
+[t=0.0121114s, 10100 KB] Plan length: 8 step(s).
+[t=0.0121114s, 10100 KB] Plan cost: 5
+[t=0.0121114s, 10100 KB] Expanded 33 state(s).
+[t=0.0121114s, 10100 KB] Reopened 0 state(s).
+[t=0.0121114s, 10100 KB] Evaluated 90 state(s).
+[t=0.0121114s, 10100 KB] Evaluations: 90
+[t=0.0121114s, 10100 KB] Generated 186 state(s).
+[t=0.0121114s, 10100 KB] Dead ends: 0 state(s).
+[t=0.0121114s, 10100 KB] Number of registered states: 90
+[t=0.0121114s, 10100 KB] Int hash set load factor: 90/128 = 0.703125
+[t=0.0121114s, 10100 KB] Int hash set resizes: 7
+[t=0.0121114s, 10100 KB] Search time: 0.00418295s
+[t=0.0121114s, 10100 KB] Total time: 0.0121114s
+Solution found.
+Peak memory: 10100 KB

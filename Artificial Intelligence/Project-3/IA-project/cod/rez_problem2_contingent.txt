@@ -1,0 +1,54 @@
+ff: found plan as follows
+-------------------------------------------------
+  0||0 --- CUMPARARE-INGREDIENT3 SALAM --- SON: 1||0
+-------------------------------------------------
+  1||0 --- CUMPARARE-INGREDIENT4 CIUPERCI --- SON: 2||0
+-------------------------------------------------
+  2||0 --- CUMPARARE-INGREDIENT2 MASLINE4 --- SON: 3||0
+-------------------------------------------------
+  3||0 --- SENSE_STRICAT_I2 MASLINE4 --- TRUESON: 4||0 --- FALSESON: 4||1
+-------------------------------------------------
+  4||0 --- SENSE_STRICAT_I3 SALAM --- SON: 5||0
+  4||1 --- SENSE_STRICAT_I3 SALAM --- SON: 5||1
+-------------------------------------------------
+  5||0 --- ARUNC_I2_STRICAT MASLINE4 --- SON: 6||0
+  5||1 --- CUMPARARE-INGREDIENT1 BRANZA2 --- SON: 6||1
+-------------------------------------------------
+  6||0 --- CUMPARARE-INGREDIENT2 MASLINE3 --- SON: 7||0
+  6||1 --- SENSE_STRICAT_I1 BRANZA2 --- TRUESON: 7||1 --- FALSESON: 7||2
+-------------------------------------------------
+  7||0 --- CUMPARARE-INGREDIENT1 BRANZA2 --- SON: 8||0
+  7||1 --- SENSE_STRICAT_I3 SALAM --- SON: 8||1
+  7||2 --- START_RETETA BRANZA2 MASLINE4 CIUPERCI SALAM PIZZA --- SON: 8||2
+-------------------------------------------------
+  8||0 --- CUMPARARE-INGREDIENT1 BRANZA1 --- SON: 9||0
+  8||1 --- ARUNC_I1_STRICAT BRANZA2 --- SON: 9||1
+  8||2 --- AMESTEC_INGREDIENTE BRANZA2 MASLINE4 CIUPERCI SALAM ALUAT PIZZA --- SON: 9||2
+-------------------------------------------------
+  9||0 --- SENSE_STRICAT_I1 BRANZA1 --- TRUESON: 10||0 --- FALSESON: 10||1
+  9||1 --- CUMPARARE-INGREDIENT1 BRANZA1 --- SON: 10||2
+  9||2 --- INCALZIRE_CUPTOR CUPTOR ALUAT PIZZA --- SON: 10||3
+-------------------------------------------------
+ 10||0 --- ARUNC_I1_STRICAT BRANZA1 --- SON: 11||0
+ 10||1 --- START_RETETA BRANZA1 MASLINE3 CIUPERCI SALAM PIZZA --- SON: 11||1
+ 10||2 --- START_RETETA BRANZA1 MASLINE4 CIUPERCI SALAM PIZZA --- SON: 11||2
+ 10||3 --- GATA_FINAL CUPTOR ALUAT PIZZA --- SON: 11||-1
+-------------------------------------------------
+ 11||0 --- START_RETETA BRANZA2 MASLINE3 CIUPERCI SALAM PIZZA --- SON: 12||0
+ 11||1 --- ARUNC_I1_STRICAT BRANZA2 --- SON: 12||1
+ 11||2 --- AMESTEC_INGREDIENTE BRANZA1 MASLINE4 CIUPERCI SALAM ALUAT PIZZA --- SON: 12||2
+-------------------------------------------------
+ 12||0 --- AMESTEC_INGREDIENTE BRANZA2 MASLINE3 CIUPERCI SALAM ALUAT PIZZA --- SON: 13||0
+ 12||1 --- AMESTEC_INGREDIENTE BRANZA1 MASLINE3 CIUPERCI SALAM ALUAT PIZZA --- SON: 13||1
+ 12||2 --- INCALZIRE_CUPTOR CUPTOR ALUAT PIZZA --- SON: 13||2
+-------------------------------------------------
+ 13||0 --- INCALZIRE_CUPTOR CUPTOR ALUAT PIZZA --- SON: 14||0
+ 13||1 --- INCALZIRE_CUPTOR CUPTOR ALUAT PIZZA --- SON: 14||1
+ 13||2 --- GATA_FINAL CUPTOR ALUAT PIZZA --- SON: 14||-1
+-------------------------------------------------
+ 14||0 --- GATA_FINAL CUPTOR ALUAT PIZZA --- SON: 15||-1
+ 14||1 --- GATA_FINAL CUPTOR ALUAT PIZZA --- SON: 15||-1
+-------------------------------------------------
+
+tree layers: 15
+total nr. actions: 34

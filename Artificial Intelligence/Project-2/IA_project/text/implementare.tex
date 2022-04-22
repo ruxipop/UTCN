@@ -1,0 +1,127 @@
+ \section{Implementare}
+
+Prove9 este un tool folosit pentru a demonstra teoreme bazate pe logica propozițională și FOL(First Order Logic). Mace4 este folosit pentru a genera modele pe baza logicii propoziționale sau FOL.
+
+Pentru a reprezenta în FOL o problemă bazată pe logica propozițională trebuie luat în considerare dimensiunea domeniului. Problema propusă de noi are un domeniu de dimensiune 4 (domain size: 4).
+\newline
+Constantele problemei sunt: M1,M2,M3,M4; reprezentând cele 4 mașini aflate în intersecție.
+\newline
+\subsection{Intersecție nedirijată}
+Predicatele problemei pentru intersectia nedirijată  sunt:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item semnalizeaza(x): mașina x semnalizează
+    \item semnalizeaza st(x): mașina x semnalizează stânga
+    \item semnalizeaza dr(x): mașina x semnalizează dreapta
+    \item fata(x): mașina x merge în față
+    \item dreapta(x): mașina x merge în dreapta
+    \item stanga(x): mașina x merge in stânga
+    \item in dreapta(x, y): mașina y se află în dreapta lui x
+    \item prioritate1(x): mașina x are prima prioritate
+    \item prioritate2(x): mașina x are prioritate dupa ce trece prima mașină
+    \item prioritate3(x): mașina x are prioritate după ce trece prima și a doua mașină
+    \item prioritate4(x): mașina x are prioritate după ce trece prima, a doua și a treia mașină
+    \item  trece1(x): mașina x trece prima 
+    \item  trece2(x): mașina x trece a doua
+    \item trece3(x): mașina x trece a treia
+    \item  trece4(x): mașina x trece a patra
+
+
+\end{itemize}
+
+\textbf{ Explicații:}
+
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item 	Deoarece într-o intersecție nedirijată se aplică prioritatea de dreapta, am ales să creez un predicat in dreapta(x, y) care o să arate care mașină se află în dreapta cărei mașini (de exemplu: in dreapta(M1, M2) înseamnă că mașina M2 este în dreapta lui M1).
+    \item 	Dacă o mașină nu semnalizează, asta înseamnă că ea nu semnalizează la stânga sau la dreapta, adică merge în față.
+    \item 	Predicatele prioritate1(x), prioritate2(x), prioritate3(x) și prioritate4(x) arată ordinea de prioritate a mașinilor. De exemplu, prioritate3(M4) ar însemna că M4 ar fi a treia mașină care ar avea prioritate după ce au trecut primele două mașini.
+    \item Liniile 49-52 asigură că o singură mașină poate avea prioritate la un moment dat.
+    \item Predicatele trece1(x), trece2(x), trece3(x) și trece4(x) indică ordinea de trecere a mașinilor. De exemplu, trece1(M2) ar însemna că mașina M2 trece prima în intersecție.
+\end{itemize}
+
+
+
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/aut.in}
+
+
+
+    
+\textbf{Comenzi:}
+
+Pentru rularea codului ne-am folosit de tool-ul Prover9 care demonstrează dacă o mașină trece în ordine sau nu. Astfel, se pot pune următoarele goal-uri pentru a testa codul:
+
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item trece1(M2), trece2(M1), trece3(M4) sau trece4(M3) o să demonstreze ordinea trecerii mașinilor: M2 trece prima, M1 o să treacă a doua, M4 a treia și M3 ultima.
+    \item trece1(M1), trece1(M3), trece1(M4), trece2(M2), trece2(M3), trece2(M4), trece3(M1), trece3(M2), trece3(M3), trece4(M1), trece4(M2) sau trece4(M4) vor da erori deoarece algoritmul nu o să reușească să găsească o demonstrație pentru ele.
+    \item -trece1(M1), -trece1(M3), -trece1(M4), -trece2(M2), -trece2(M3), -trece2(M4), -trece3(M1), -trece3(M2), -trece3(M3), -trece4(M1), -trece4(M2) sau -trece4(M4) vor reuși să demonstreze faptul că mașinile nu vor trece în ordine în intersecție.
+    \item -trece1(M2), -trece2(M1), -trece3(M4) sau -trece4(M3) vor da eroare deoarece algoritmul nu o să reușească să le demonstreze.
+
+\end{itemize}
+
+
+\textbf{Comanda pentru rularea codului din terminal:}
+prover9 -f ”aut.in”
+
+\newpage
+\subsection{Intersecție dirijată}
+
+Predicatele problemei pentru intersecția dirijată sunt:
+
+\newline
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item  semnalizeaza(x): mașina x semnalizează
+    \item semnalizeaza st(x): mașina x semnalizează stânga
+    \item semnalizeaza  dr(x): mașina x semnalizează dreapta
+    \item fata(x): mașina x merge în față
+
+\item  dreapta(x): mașina x merge în dreapta
+    \item stanga(x): mașina x merge în stânga
+    \item semn(x, cedeaza), semn(x, prioritate), semn(x, stop): mașina x are semnul de cedează/prioritate/stop
+    \item peAceeasiStradă(x, y, prioritate), peAceeasiStrada(x, y, faraPrioritate): mașinile x si y se află pe o stradă cu prioritate/fără prioritate
+    \item trece1(x): mașina x trece prima
+    \item trece2(x): mașina x trece a doua
+    \item trece3(x): mașina x trece a treia
+    \item trece4(x): mașina x trece a patra
+\end{itemize}
+
+\textbf{ Explicații:}
+\newline
+ \begin{itemize}
+    \setlength\itemsep{0em}
+	\item Predicatele semn(x, cedeaza), semn(x, prioritate) și semn(x, stop) arată semnul specific intrării în intersecție unei mașini (de exemplu, semn(M1, cedează) înseamnă că mașina are cedează trecerea).
+\item La linia 43, dacă două mașini sunt pe drumul cu semnul de prioritate, atunci predicatul peAceeasiStrada(x, y, prioritate) este adevărat.
+\item	La linia 46, dacă două mașini sunt pe drumul cu semnul  de cedează sau stop, atunci predicatul peAceeasiStrada(x, y, faraPrioritate) este adevărat.
+\end{itemize}
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/aut_dir.in}
+
+
+
+    
+\textbf{Comenzi:}
+
+Pentru rularea codului ne-am folosit de tool-ul Prover9 care demonstrează dacă o mașină trece în ordine sau nu. Astfel, se pot pune următoarele goal-uri pentru a testa codul:
+
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item trece1(M2), trece2(M4), trece3(M3) sau trece4(M1) o să demonstreze ordinea trecerii mașinilor: M2 trece prima, M4 o să treacă a doua, M3 a treia și M1 ultima.
+    \item trece1(M1), trece1(M3), trece1(M4), trece2(M1), trece2(M2), trece2(M3), trece3(M1), trece3(M2), trece3(M4), trece3(M2), trece3(M3) sau trece3(M4)  vor da erori deoarece algoritmul nu o să reușească să găsească o demonstrație pentru ele.
+    \item -trece1(M1), -trece1(M3), -trece1(M4), -trece2(M1), -trece2(M2), -trece2(M3), -trece3(M1), -trece3(M2), -trece3(M4), -trece3(M2), -trece3(M3) sau -trece3(M4) vor reuși să demonstreze faptul că mașinile nu vor trece în ordine în intersecție.
+    \item -trece1(M2), -trece2(M4), -trece3(M3) sau -trece4(M1) vor da eroare deoarece algoritmul nu o să reușească să le demonstreze.  
+
+\end{itemize}
+
+
+\textbf{Comanda pentru rularea codului din terminal:}
+prover9 -f ”aut\_dir.in”

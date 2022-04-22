@@ -1,0 +1,320 @@
+ \section{Implementare}
+
+Pentru realizarea acestor cerințe este nevoie de a defini domeniul și diferite probleme. Domeniul descriind cum arata mediul în care se desfășoară acțiunile, obiectele (agenții) care fac acțiunile și acțiunile care se petrec în acest mediu. Având un domeniu stabilit, se pot genera diferite probleme pe baza lui. În probleme se folosesc obiectele și acțiunile declarate în domeniu, după care se urmarește crearea unei condiții inițiale din care să rezulte o anumită stare finală  definită de noi.
+
+Ambele probleme create de noi au aceeași idee de implemetare, diferentă fiind faptul că una are aplicabilitate în mediul real, iar alta nu.
+\newline
+
+\newline
+\subsection{Problema fară aplicabilitate în lumea reală}
+\subsubsection{Reprezentare domeniu pentru rețetă}
+Predicatele domeniului sunt:
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item nu are i1 ?i1: nu are ingredientul 1
+    \item nu are i2 ?i2: nu are ingredientul 2
+    \item nu are i3 ?i3: nu are ingredientul 3
+    \item nu are i4 ?i4: nu are ingredientul 4
+    \item nu preparat final ?fin: preparatul final nu e gata
+    \item neincalzit ?c: cuptorul nu este încalzit
+    \item nu are amestec ? a: amestecul pentru rețetă nu e gata
+    \item nu in cuptor ?c ?a: amestecul nu este băgat în cuptor
+    \item nu gata ?fin:  rețeta nu e gata
+  
+
+
+\end{itemize}
+Funcțiile domeniului sunt:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item calitate-i1 ?i1: returnează calitatea ingredientului 1
+    \item calitate-i2 ?i2: returnează calitatea ingredientului 2
+    \item calitate-i3 ?i3: returnează calitatea ingredientului 3
+    \item calitate-i4 ?i4: returnează calitatea ingredientului 4
+    \item total-cost: calculează costul total
+
+
+\end{itemize}
+Acțiunile domeniului sunt:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item cumparare ingredient1: cumpără primul ingredient
+    \item cumparare ingredient2: cumpără al doilea ingredient
+    \item cumparare ingredient3: cumpără al treilea ingredient
+    \item cumparare ingredient4: cumpăra al patrulea ingredient
+    \item start reteta: aici începe să se prepare rețeta
+    \item amestec ingrediente:  amestecă ingredientele pentru a obține aluatul
+    \item incalzire cuptor: încalzeste cuptorul pentru a adăuga aluatul
+    \item  gata final: preparatul este gata și pregătit pentru servire
+    
+\end{itemize}
+
+
+
+
+
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/domain_reteta_heuristics.pddl}
+\bigskip
+\textbf{ Explicații:}
+
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item La linia 3, pentru generalitate, în loc să specificăm un anumit tip de ingredient (de exemplu ouă sau brânză), am declarat
+  tipul ingredientX, X fiind de la 1 la 4. Asta înseamnă că, pentru acest domeniu, avem nevoie obligatoriu de un număr de 4 
+  ingrediente pentru a realiza rețeta. De asemenea, final și amestec au fost puse tot pentru generalitate (în problemă, tipul 
+  final se referă la pizza, prăjitură etc., iar amestec la aluat, pastă etc.). 
+    \item 	La liniile 16-22 sunt functiile domeniului. Avem o funcție de calitate pentru fiecare ingredient și funcția total-cost pe care
+  îl folosim pentru selectarea produselor ce vor fi cumpărate.
+    \item 	La liniile 25-52 are loc cumpărarea ingredientelor. Aici crește totodată și costul total în funcție de calitatea fiecărui 
+  produs. Ingredientele vor fi alese în funcție de euristici.
+    \item La liniile 55-66 este acțiunea start reteta. Aceasta incepe prepararea produsului final doar dacă are toate ingredientele la 
+  îndemână.
+    \item La liniile 68-84 este acțiunea amestec ingrediente. Aici se consumă ingredientele pentru a obține un amestec.
+    \item La liniile 86-102 are loc acțiunea incalzire cuptor. Aici, amestecul se pune în cuptor și se încălzește
+    \item La liniile 104-117 are loc acțiunea gata final, unde se scoate amestecul din cuptor, și se generează produsul final.
+  
+\end{itemize}
+
+
+\bigskip
+    
+
+
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+ 
+
+
+\end{itemize}
+
+
+\textbf{Comanda pentru rularea codului din terminal:}
+prover9 -f ”aut.in”
+\subsubsection{Reprezentare problema 1}
+Prima problemă reprezintă realizarea unei rețete pentru o prajitură cu măr.
+Obiectele problemei sunt:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item ou1, ou2, ou3, ou4: reprezintă primul ingredient
+    \item mar1, mar2, mar3: reprezintă al doilea ingredient
+    \item lapte1, lapte2: reprezintă al treilea ingredient
+    \item faina: reprezintă al patrulea ingredient
+    \item prajitura: reprezintă produsul care trebuie să rezulte în urma realizării rețetei
+    \item cuptor: reprezintă cuptorul unde va fi adăugat aluatul pentru prăjitură
+    \item aluat: reprezintă aluatul format în urma amestecării tuturor ingredientelor
+
+
+\end{itemize}
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/problem_reteta_heuristics.pddl}
+    
+ \textbf{ Explicații:}
+
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Liniile 13-47 reprezintă starea inițială a problemei. În această stare, o personă nu are nici un ingredient la dispoziție, cuptorul este neîncalzit, iar prajitura nu e gata
+    \item Liniile 32-45 prezintă calitatea ingredientelor cumpărate. Un ingredient e de calitate dacă numărul asociat lui este cât
+  mai mic. De exemplu, mărul 3 din magazin (calitate = 4) este mai bun decât mărul 1 (calitate = 10). Acest lucru este 
+  important deoarece, precum se vede la linia 66, pe lângă scopul de a se face prăjitura, aceasta trebuie să fie
+  cea mai bună, adică să fie formată din ingredientele cele mai bune (suma ingredientelor să fie minimă).  
+  \item Linia 51 reprezintă scopul problemei, adică să fie gata prajitura (evidențiat prin predicatul negat (not (nu gata 
+  prajitura).
+
+  
+\end{itemize}   
+
+\newpage
+
+\subsubsection{Reprezentare problema 2}
+A doua  problemă reprezintă realizarea unei rețete pentru o pizza.
+Obiectele problemei sunt:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item branza1, branza2: reprezintă primul ingredient
+    \item masiline1, masline2, masline3, masline4: reprezintă al doilea ingredient
+    \item salam: reprezintă al treilea ingredient
+    \item ciuperci: reprezintă al patrulea ingredient
+    \item pizza: reprezintă produsul care trebuie să rezulte în urma realizării rețetei
+    \item cuptor: reprezintă cuptorul unde va fi adăugat aluatul pentru pizza
+    \item aluat: reprezintă aluatul format în urma amestecării tuturor ingredientelor
+
+
+\end{itemize}
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/problem2_reteta_heuristics.pddl}
+    
+ \textbf{ Explicații:}
+
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Această problema e asemanatoare cu cea de la problema reteta heuristics, numai că în acest caz am ales să urmăm rețeta pentru o pizza, deci avem alte ingrediente și alte valori de calitate.
+
+  
+\end{itemize}   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+\newpage
+
+
+
+
+
+\subsection{Problema cu aplicabilitate în lumea reala}
+\subsubsection{Reprezentare domeniu pentru rețetă}
+
+Predicatele domeniului sunt:
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item nu are i1 ?i1: nu are ingredientul 1
+    \item nu are i2 ?i2: nu are ingredientul 2
+    \item nu are i3 ?i3: nu are ingredientul 3
+    \item nu are i4 ?i4: nu are ingredientul 4
+    \item stricat i1 ?1: ingredientul 1 e stricat
+      \item stricat i2 ?2: ingredientul 2 e stricat
+        \item stricat i3 ?3: ingredientul 3 e stricat
+       
+    \item nu preparat final ?fin: preparatul final nu e gata
+    \item neincalzit ?c: cuptorul nu este încălzit
+    \item nu are amestec ? a: amestecul pentru rețetă nu e gata
+    \item nu in cuptor ?c ?a: amestecul nu este băgat în cuptor
+    \item nu gata ?fin: rețeta nu e gata
+  
+
+
+\end{itemize}
+Acțiunile domeniului sunt:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item sense stricat i1: verifică dacă ingredientul 1 e stricat
+        \item sense stricat i2: verifică dacă ingredientul 2 e stricat
+            \item sense stricat i3: verifică dacă ingredientul 3 e stricat
+    \item cumparare ingredient1: cumpără primul ingredient
+    \item cumparare ingredient2: cumpără al doilea ingredient
+    \item cumparare ingredient3: cumpără al treilea ingredient
+    \item cumparare ingredient4: cumpără al patrulea ingredient
+    \item arunc i1 stricat: dacă ingredientul 1 e stricat, se aruncă
+       \item arunc i2 stricat: dacă ingredientul 2 e stricat, se aruncă
+          \item arunc i3 stricat: dacă ingredientul 3 e stricat, se aruncă
+    \item start retea: aici începe să se prepare produsul
+    \item amestec ingrediente: amestecă ingredientele pentru a obține aluatul
+    \item incalzire cuptor: încălzește cuptorul pentru a adăuga aluatul
+    \item  gata final: preparatul este gata și pregătit pentru servire
+    
+\end{itemize}
+
+
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/domain_reteta_contingent.pddl}
+
+
+\textbf{ Explicații:}
+    
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item La liniile 9-11 se remarcă 3 predicate care anunță dacă un ingredient e stricat. Asta înseamnă că pentru o problemă, numărul 
+  maxim de ingrediente care pot să fie stricate este 3 (una pentru fiecare tip de ingredient, în afară de unul singur).
+    \item La liniile 19-37 se observă elementul predicatul necunoscut stricat ingredient pentru a testa dacă are trebuie aruncat sau nu.
+  îl folosim pentru selectarea produselor ce vor fi cumpărate. De asemenea, precondiția pentru a începe observarea este să fi cumpărat ingredientul.
+    \item 	La liniile 63-82 are loc acțiunea de aruncare a ingredientelor dacă sunt stricate. După efectuarea acțiunii, se pierde ingredientul
+  și trebuie cumpărat altul.
+    \item La liniile 86-99, acțiunea start reteta, pe lângă faptul că trebuie să aibă câte una din fiecare tip de ingredient la dispoziție, 
+  acestea nu trebuie să fie stricate.  
+    \item La liniile 101-117 este acțiunea amestec ingrediente. Aici se consumă ingredientele pentru a obține un amestec.
+    \item La liniile 119-135 are loc acțiunea incalzire cuptor. Aici, amestecul se pune în cuptor și se încălzește
+    \item La  liniile 137-150 are loc acțiunea gata final, unde se scoate amestecul din cuptor, și se generează produsul final.
+  
+\end{itemize}
+
+
+\newpage
+
+\subsubsection{Reprezentare problema 1}
+Prima problema reprezintă realizarea unei rețete pentru o prăjitură cu măr.
+Obiectele problemei sunt:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item ou1, ou2, ou3, ou4: reprezintă primul ingredient
+    \item mar1, mar2, mar3: reprezintă al doilea ingredient
+    \item lapte1, lapte2: reprezintă al treilea ingredient
+    \item faina: reprezintă al patrulea ingredient
+    \item prajitura: reprezintă produsul care trebuie să rezulte în urma realizării rețetei
+    \item cuptor: reprezintă cuptorul unde va fi adaugat aluatul pentru prajitură
+    \item aluat: reprezintă aluatul format în urma amestecării tuturor ingredientelor
+
+
+\end{itemize}
+
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/problem_reteta_contingent.pddl}
+    
+ \textbf{ Explicații:}
+
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item La liniile 32-43 am implementat ideea că un ingredient de un anumit tip din totalul de ingrediente din acel tip e stricat 
+  (de exemplu, unul din cele 4 ouă sunt stricate, sau un măr din cele 3 e stricat). 
+    \item La liniile 52-61 din scop, am evidențiat faptul că trebuie consumate toate ingredientele. Acest lucru evită situația de a
+  cumpăra toate produsele din prima, și apoi să nu aibă loc acțiunea de arunc ingredient stricat (pentru ca nu ar mai avea rost).
+ 
+
+  
+\end{itemize}   
+
+
+\subsubsection{Reprezentare problema 2}
+A doua problemă reprezintă realizarea unei rețete pentru o pizza.
+Obiectele problemei sunt:
+
+ \begin{itemize}
+    \setlength\itemsep{0em}
+    \item branza1, branza2: reprezintă primul ingredient
+    \item masiline1, masline2, masline3, masline4: reprezintă al doilea ingredient
+    \item salam: reprezintă al treilea ingredient
+    \item ciuperci: reprezintă al patrulea ingredient
+    \item pizza: reprezintă produsul care trebuie să rezulte în urma realizării rețetei
+    \item cuptor: reprezintă cuptorul unde va fi adăugat aluatul pentru pizza
+    \item aluat: reprezintă aluatul format în urma amestecării tuturor ingredientelor
+
+
+\end{itemize}
+\textbf{Code:}
+% a se completa fisierul code/dfs.py
+
+    \inputminted[linenos]{C}{cod/problem2_reteta_contingent.pddl}
+    
+ \textbf{ Explicații:}
+
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Această problemă e asemănătoare cu cea de la problem reteta contingent, numai că în acest caz am ales urmăm rețeta pentru o
+  pizza, deci avem alte ingrediente și 2 tipuri de ingrediente stricate.
+
+  
+\end{itemize}   
+    
+    

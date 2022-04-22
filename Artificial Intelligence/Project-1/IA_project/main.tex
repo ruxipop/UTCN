@@ -1,0 +1,57 @@
+\documentclass[helvetica, 10pt]{article}
+
+% If you're new to LaTeX, here's some short tutorials:
+% https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+% https://en.wikibooks.org/wiki/LaTeX/Basics
+
+% Formatting
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+
+% Math
+% https://www.overleaf.com/learn/latex/Mathematical_expressions
+\usepackage{amsmath, amsfonts, amssymb, mathtools}
+
+% Images
+% https://www.overleaf.com/learn/latex/Inserting_Images
+\usepackage{graphicx, float}
+
+% Algorithms
+% https://www.overleaf.com/learn/latex/algorithms
+% https://en.wikibooks.org/wiki/LaTeX/Algorithms
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+
+% Code syntax highlighting
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{minted}
+\usemintedstyle{borland}
+
+
+% ====================== TITLE =========================================
+\title{Artificial intelligence - Project 1 \\ - Search problems - }
+
+% introduceti numele autorului aici
+\author{Pop Ruxandra Maria, Zelenszky Bianca}
+\date{02/11/2021}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+% ====================== UNINFORMED SEARCH =============================
+\include{text/1_uninformed_search}
+
+% ====================== INFORMED SEARCH ===============================
+\include{text/2_informed_search}
+
+% ====================== ADVERSARIAL SEARCH=============================
+\include{text/3_adversarial_search}
+
+% ====================== PROPRIETARY PROBLEM ===========================
+\include{text/4_proprietary_problem}
+
+\end{document}

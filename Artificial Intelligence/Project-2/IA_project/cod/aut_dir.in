@@ -1,0 +1,64 @@
+%Avem patru mașini intr-o intersecție dirijată: M1, M2, M3, M4.
+%Intersecția e bazată pe desenul din cerință.
+%M1 semnalizează stânga si se află pe strada cu semnul CEDEAZĂ
+%M2 nu semnalizează si merge in față si se află pe strada cu prioritate.
+% M3  nu semnalizează si merge in față si se află pe strada cu semnul STOP.
+%M4  semnalizează stânga si se află pe strada cu prioritate.
+%Vrem să determinăm dacă trece M2 primul, M4 al doilea, M3 al treilea si M1 ultimul.
+formulas(assumptions).
+
+
+% domain size 4 : {M1, M2, M3, M4}
+
+% constant: M1, M2, M3, M4
+% predicate: semnalizeaza(x): masina x semnalizeaza
+% predicate: semnalizeaza_st(x): masina x semnalizeaza stanga
+% predicate: semnalizeaza_dr(x): masina x semnalizeaza dreapta
+% predicate: fata(x): masina x merge in fata
+% predicate: dreapta(x): masina x merge in dreapta
+% predicate: stanga(x): masina x merge in stanga
+% predicate: semn(x, cedeaza), semn(x, prioritate), semn(x, stop): masina x are semnul de cedeaza/prioritate/stop
+% predicate: pe_aceeasi_strada(x, y, prioritate), pe_aceeasi_strada(x, y, fara_prioritate): masinile x si y se afla pe o strada cu prioritate/fara prioritate
+% predicate: trece1(x): masina x trece prima
+% predicate: trece2(x): masina x trece a doua
+% predicate: trece3(x): masina x trece a treia
+% predicate: trece4(x): masina x trece a patra
+
+-semnalizeaza_st(x) & -semnalizeaza_dr(x) -> fata(x).
+semnalizeaza_dr(x) -> dreapta(x).
+semnalizeaza_st(x) -> stanga(x).
+-semnalizeaza(x) -> -semnalizeaza_st(x) & -semnalizeaza_dr(x). 
+
+semnalizeaza_st(M1).
+-semnalizeaza(M2).
+-semnalizeaza(M3).
+semnalizeaza_st(M4).
+
+semn(M1, cedeaza).
+semn(M2, prioritate).
+semn(M3, stop).
+semn(M4, prioritate).
+
+% daca doua masini sunt pe aceeasi strada cu prioritate
+semn(x, prioritate) & semn(y, prioritate) -> pe_aceeasi_strada(x, y, prioritate).
+
+% daca doua masini sunt pe aceeasi strada fara prioritate
+(semn(x, cedeaza) & semn(y, stop)) | (semn(x, stop) & semn(y, cedeaza)) -> pe_aceeasi_strada(x, y, fara_prioritate).
+
+% daca masina are prioritate si merge in fata, trece prima
+pe_aceeasi_strada(x, y, prioritate) & fata(x) & stanga(y) -> trece1(x) & -trece2(x) & -trece3(x) & -trece4(x).
+
+% daca masina are prioritate si merge in stanga, trece al doilea
+pe_aceeasi_strada(x, y, prioritate) & stanga(x) & fata(y) -> -trece1(x) & trece2(x) & -trece3(x) & -trece4(x).
+
+% daca masina are stop si o alta masina are cedeaza, si merge in fata, are prioritate
+pe_aceeasi_strada(x, y, fara_prioritate) & fata(x) & stanga(y) ->  -trece1(x) & -trece2(x) & trece3(x) & -trece4(x).
+
+% daca masina are cedeaza trecerea si o ia la stanga, iar o alta masina are stop si o ia in fata, e ultimul
+pe_aceeasi_strada(x, y, fara_prioritate) & stanga(x) & fata(y) ->  -trece1(x) & -trece2(x) & -trece3(x) & trece4(x).
+
+end_of_list.
+
+formulas(goals).
+end_of_list.
+

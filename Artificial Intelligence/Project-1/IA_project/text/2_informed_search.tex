@@ -1,0 +1,237 @@
+\section{Informed search}
+% ============================================= A*  ============================================= 
+\subsection{Question 4 - A* search  algorithm}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+
+\textit{"Go to aStarSearch in search.py and implement \textbf{A* search algorithm}. A* is graphs search with the frontier as a priorityQueue, where the priority is given bythe function g=f+h"}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+% a se completa fisierul code/4_a_star.py
+%\begin{listing}[h]
+    \inputminted[linenos]{python}{code/04_a_star.py}
+ %   \caption{Solution for the A* algorithm.}
+  %  \label{listing:a_star}
+%\end{listing}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item la linia 7 se observa ca folosim frontiera ca si o coada de prioritate
+\item la linia 17 si 32 am folosit o structura de date CustomNode care are ca argumente pozitia starea, actiunea, costul si parintele nodului
+\item la liniile 18 si 46 se observa folosirea functiei update() din cadrul tipului PriorityQueue pentru a adauga in frontiera nodurile expandate si a actualiza prioritatea in acelasi timp
+\item la liniile 48 - 58  se scot din frontiera nodurile care se afla in exploredList (pentru a nu explora de doua ori un nod)
+% in line 4 we raise an NotDefinied error to make the debugging procces easier
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+\item python pacman.py -l tinyMaze -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic
+\item python pacman.py -l smallMaze -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic
+\item python pacman.py -l mediumMaze -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic
+    \item python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic % exemplu -l tinyMaze -p SearchAgent -a fn=dfs
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} Does A* and UCS find the same solution or they are different?
+
+
+\textbf{A1:} Cu toate ca nu am facut UCS, solutiile dintre A* si UCS ar trebui sa difere in functie de euristica. Daca euristica la A* e 0, atunci solutia lor este aceeasi, dar daca A* are o alta euristica, solutiile poate sa difere in functie de admisibilitatea si consistenta euristicii. Daca e admisibila si consistenta, atunci A* va avea solutia optima si aceeasi solutie ca UCS, altfel nu.% scrieti raspunsul acestei intrebari si stergeti \newline, acesta ar trebui sa aiba maxim 100 de cuvinte
+
+
+\textbf{Q2:} Does A* finds the solution with fewer expanded nodes than UCS?
+
+
+\textbf{A2:} Folosind euristica Manhattan pentru calcularea distantelor dintre starea initiala si celulele din grid, se expandeaza mai putine noduri decat daca as folosi euristica nula. % scrieti raspunsul acestei intrebari si stergeti \newline, acesta ar trebui sa aiba maxim 100 de cuvinte
+
+
+\textbf{Q3:} Run autograder \textit{python autograder.py} and write the points for Question 4 (min 3 points).
+
+
+\textbf{A3:} Question q3: 4/4 % srieti scorul primit de la autograder.
+
+
+\subsubsection{Personal observations and notes}
+ \newline
+Pentru a rezolva testcase-ul graphmanypaths, am scris liniile de cod 48 - 58, unde, pentru ca am constatat ca se pot pune in frontiera noduri care au fost deja in exploredList, am creat un loop care scoate din frontiera un nod si le compara cu nodurile explorate. De asemenea, valoarea solutiei va fi actiunea curenta daca nodul care a fost scos din frontiera nu e radacina, sau se va crea o solutie noua daca a ajuns sa fie nodul de start. \newline
+Pe layout-ul tinyMaze expandeaza 15 de noduri. \newline
+Pe layout-ul smallMaze expandeaza 92 noduri. \newline
+Pe layout-ul mediumMaze expandeaza 269 noduri. \newline
+Pe layout-ul bigMaze expandeaza 620 noduri. 
+
+% descrieti aici orice fel de probleme ati intampinat in timpul rezolvarii acestui task si modul cum in care le-ati solutionat
+\vspace{0.75cm}
+
+% ============================================= All Corners ===================================== 
+\subsection{Question 5 - Find all corners - problem implementation}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+
+\textit{"Pacman  needs  to  find  the  shortest  path  to  visit  all  the  corners,regardless  there  is  food  dot  there  or  not. Go to \textbf{CornersProblem} in searchAgents.py and propose a representation of the state of this search problem. It might help to look at the existing implementation for PositionSearchProblem. The representation should include only the information necessary to reach the goal. Read carefully the comments inside the class CornersProblem."}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+
+% a se completa fisierul code/corner_problem.py
+\inputminted[linenos]{python}{code/05_corner_problem.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item dupa cum se poate vedea la liniile 22, 24 si 104, informatia am retinut-o intr-o tupla de forma (state, cornersList), unde state este starea si cornersList este o lista cu corner-urile vizitate de la nodul de start pana in starea state
+\item la liniile 100 - 102, adaugam in cornersList corner-urile pe masura ce le gasim % in line 4 we raise an NotDefinied error to make the debugging procces easier
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item  python pacman.py -l tinyCorners -p SearchAgent -a fn=bfs,prob=CornersProblem
+\item python pacman.py -l mediumCorners -p SearchAgent -a fn=bfs,prob=CornersProblem% exemplu -l tinyMaze -p SearchAgent -a fn=dfs
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} For mediumCorners, BFS expands a big number - around 2000 search nodes.  It’s time to see that A* with an admissible heuristic is able to reduce this number. Please provide your results on this matter. (Number of searched nodes).
+
+\textbf{A1:} Search nodes expanded: 2448 (pentru BFS CornersProblem)
+\newline
+Search nodes expanded: 901 (pentru A* cu cornersHeuristic)
+% scrieti raspunsul acestei intrebari si stergeti \newline
+
+
+\subsubsection{Personal observations and notes}
+Aici mi-am dat seama de dificultatea implementarii intr-un limbaj de programare pe care nu l-am mai folosit pana acum. \newline
+Pe layout-ul tinyCorners se expandeaza 435 noduri. \newline
+Pe layout-ul mediumCorners se expandeaza 2448 noduri. 
+% descrieti aici orice fel de probleme ati intampinat in timpul rezolvarii acestui task si modul cum in care le-ati solutionat
+\vspace{0.75cm}
+
+% ============================================= Consistent heuristic ============================= 
+\subsection{Question 6 - Find all corners - Heuristic definition}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+
+\textit{"Implement  a  consistent  heuristic  for  CornersProblem. Go to the function \textbf{cornersHeuristic} in searchAgent.py."}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+
+% a se completa fisierul code/6_consisntency_heuristic.py
+\inputminted[linenos]{python}{code/06_consistent_heuristic.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+\item la linia 20 calculam lista de corner-uri nevizitate ca fiind diferenta dintre lista totala de corners ale problemei si lista de corners vizitate ale starii.
+    \item la liniile 25 - 43 este prezentata euristica pentru rezolvarea CornersProblem. Aceasta functioneaza in felul urmator: se gaseste distanta cea mai mica de la pozitia lui Pacman catre un corner, distanta fiind adunata la euristica, dupa care se schimba pozitia lui Pacman cu pozitia celui mai aproape corner si se scoate din unvisitedCorners acel corner. Acest algoritm are loc cat timp exista corners nevizitate. % in line 4 we raise an NotDefinied error to make the debugging procces easier
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+\item python pacman.py -l tinyCorners -p AStarCornersAgent
+    \item  python pacman.py -l mediumCorners -p AStarCornersAgent -z 0.5 % exemplu -l tinyMaze -p SearchAgent -a fn=dfs
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} Test  with  on the mediumMaze layout. What is your number of expanded nodes?
+
+\textbf{A1:} Search nodes expanded: 2448 (pentru BFS CornersProblem)
+\newline
+Search nodes expanded: 901 (pentru A* cu cornersHeuristic) % scrieti raspunsul acestei intrebari si stergeti \newline
+
+
+\subsubsection{Personal observations and notes}
+Daca calculez in for toate distantele ca sa aflu cea mai mica dintre ele imi da mai multe noduri expandate decat daca calculez prima distanta separat, si apoi restul distantelor in for, ceea ce nu prea am inteles de ce. \newline
+Pe layout-ul tinyCorners se expandeaza 217 noduri. \newline
+Pe layout-ul mediumCorners se expandeaza 901 noduri. 
+% descrieti aici orice fel de probleme ati intampinat in timpul rezolvarii acestui task si modul cum in care le-ati solutionat
+
+% ============================================= Food heuristic ============================= 
+\subsection{Question 7 - Eat all food dots - Heuristic definition}
+% enuntul intrebarii
+In this section the solution for the following problem will be presented: \newline
+
+
+\textit{"Propose a heuristic for the problem of eating all the food-dots. The problem of eating all food-dots is already implemented in \textbf{FoodSearchProblem} in searchAgents.py."}.
+
+
+\subsubsection{Code implementation}
+This sub-section is dedicated to showcasing your own solution that you came up with for solving the above question. One has to put here any \textbf{code} that has been used for solving the above task, along with \textbf{comments} that explain every design decision made. To reference the code, please make use of the \textit{code lines number}. Additionally, complete this sub-section with any \textbf{command configurations} that you may have used during the implementation or testing process (please fill in \textit{just the arguments}). \\
+
+\textbf{Code:}
+
+% a se completa fisierul code/6_consisntency_heuristic.py
+\inputminted[linenos]{python}{code/07_find_food.py}
+
+
+\textbf{Explanation:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+\item la linia 13 am folosit mazeDistance pentru a calcula distantele dintre pozitia lui Pacman si a mancarii
+    \item la linia 14 returnam 0 daca lungimea listei de distance e 0 (nu mai avem mancare, deci ne-am atins goal-ul)% in line 4 we raise an NotDefinied error to make the debugging procces easier
+
+\end{itemize}
+
+
+\textbf{Commands:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item  python pacman.py -l testSearch -p AStarFoodSearchAgent 
+\item python pacman.py -l tinySearch -p AStarFoodSearchAgent
+\item python pacman.py -l trickySearch -p AStarFoodSearchAgent % exemplu -l tinyMaze -p SearchAgent -a fn=dfs
+        
+\end{itemize}
+
+\subsubsection{Questions}
+This sub-section is dedicated to the additional questions that come along with the exercise. Please answer to the following questions:\newline
+
+
+\textbf{Q1:} Test  with  autograder \textit{python autograder.py}. Your score depends on the number of expanded states by A* with your heuristic. What is that number?
+
+\textbf{A1:} expanded nodes: 4137 % scrieti raspunsul acestei intrebari si stergeti \newline
+
+
+\subsubsection{Personal observations and notes}
+Am folosit mazeDistance pentru a calcula distanta dintre pozitia lui Pacman si pozitia mancarii (linia 13) deoarece am observat ca expandeaza mai putine noduri decat cu manhattanDistance (la mazeDistance se foloseste de implementarea noastra de BFS pentru a genera solutia optima). \newline
+Pe layout-ul testSearch se expandeaza 10 noduri. \newline
+Pe layout-ul tinySearch se expandeaza 2372 noduri. \newline
+Pe layout-ul trickySearch se expandeaza 4137 noduri. % descrieti aici orice fel de probleme ati intampinat in timpul rezolvarii acestui task si modul cum in care le-ati solutionat
+
+\vspace{0.75cm}
+
+\subsection{References}

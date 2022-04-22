@@ -1,0 +1,25 @@
+[t=0.0168054s, 10100 KB] Solution found!
+[t=0.0169503s, 10100 KB] Actual search time: 0.00655881s
+cumparare-ingredient2 mar1 (10)
+cumparare-ingredient3 lapte1 (3)
+cumparare-ingredient1 ou1 (5)
+cumparare-ingredient4 faina (1)
+start_reteta ou1 mar1 faina lapte1 prajitura (0)
+amestec_ingrediente ou1 mar1 faina lapte1 aluat prajitura (0)
+incalzire_cuptor cuptor aluat prajitura (0)
+gata_final cuptor aluat prajitura (0)
+[t=0.0170435s, 10100 KB] Plan length: 8 step(s).
+[t=0.0170435s, 10100 KB] Plan cost: 19
+[t=0.0170435s, 10100 KB] Expanded 71 state(s).
+[t=0.0170435s, 10100 KB] Reopened 0 state(s).
+[t=0.0170435s, 10100 KB] Evaluated 191 state(s).
+[t=0.0170435s, 10100 KB] Evaluations: 191
+[t=0.0170435s, 10100 KB] Generated 576 state(s).
+[t=0.0170435s, 10100 KB] Dead ends: 0 state(s).
+[t=0.0170435s, 10100 KB] Number of registered states: 191
+[t=0.0170435s, 10100 KB] Int hash set load factor: 191/256 = 0.746094
+[t=0.0170435s, 10100 KB] Int hash set resizes: 8
+[t=0.0170435s, 10100 KB] Search time: 0.00768715s
+[t=0.0170435s, 10100 KB] Total time: 0.0170435s
+Solution found.
+Peak memory: 10100 KB
