@@ -1,13 +1,12 @@
 # UTCN
 <ul>
-  <li>:open_file_folder: Semester 2
+   <li>:open_file_folder: Semester 2
     <ul>
       <li>
         <a href=""> 
-          :clubs:  Digital Systems Design
+          :clubs:  Algebra 
         </a>
       </li>
-    
     </ul>
   </li>
   
