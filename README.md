@@ -64,13 +64,18 @@
         Structure Of Computer Systems
         </a>
       </li>
+     <li> :anger:
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Software%20Engineering/Project">
+          Software Engineering
+        </a>
+      </li>
     </ul>
   </li>
   <li>:open_file_folder: Semester 6
     <ul>
       <li> :anger:
-        <a href="https://github.com/Pufcorina/Android-Things">
-          Android Things
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Software%20Engineering/Project">
+          Software Engineering
         </a>
       </li>
       <li> :grey_question:
