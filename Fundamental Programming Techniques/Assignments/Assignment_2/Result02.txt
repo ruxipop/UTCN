@@ -1,0 +1,98 @@
+Time 0
+Waiting clients: (4, 4, 2)(1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 1
+Waiting clients: (4, 4, 2)(1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 2
+Waiting clients: (4, 4, 2)(1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 3
+Waiting clients: (4, 4, 2)(1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 4
+Waiting clients: (1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: (4, 4, 2)
+Queue2: closed.
+
+Time 5
+Waiting clients: (1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: (4, 4, 1)
+Queue2: closed.
+
+Time 6
+Waiting clients: (1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 7
+Waiting clients: (1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 8
+Waiting clients: (1, 9, 2)(3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 9
+Waiting clients: (3, 13, 4)(2, 16, 2)
+Queue1: (1, 9, 2)
+Queue2: closed.
+
+Time 10
+Waiting clients: (3, 13, 4)(2, 16, 2)
+Queue1: (1, 9, 1)
+Queue2: closed.
+
+Time 11
+Waiting clients: (3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 12
+Waiting clients: (3, 13, 4)(2, 16, 2)
+Queue1: closed.
+Queue2: closed.
+
+Time 13
+Waiting clients: (2, 16, 2)
+Queue1: (3, 13, 4)
+Queue2: closed.
+
+Time 14
+Waiting clients: (2, 16, 2)
+Queue1: (3, 13, 3)
+Queue2: closed.
+
+Time 15
+Waiting clients: (2, 16, 2)
+Queue1: (3, 13, 2)
+Queue2: closed.
+
+Time 16
+Waiting clients: 
+Queue1: (3, 13, 1)
+Queue2: (2, 16, 2)
+
+Time 17
+Waiting clients: 
+Queue1: closed.
+Queue2: (2, 16, 1)
+
+Time 18
+Waiting clients: 
+Queue1: closed.
+Queue2: closed.
+
+Average waiting time is : 0.0
+Average service time is : 2.5
+Peak hour is : 16
