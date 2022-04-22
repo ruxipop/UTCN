@@ -1,6 +1,6 @@
 # UTCN
 <ul>
-  <li>:open_file_folder: Semester 1
+  <li>:open_file_folder: Semester 2
     <ul>
       <li>
         <a href=""> 
@@ -13,4 +13,5 @@
         </a>
       </li>
     </ul>
+  </li>
 </ul>
