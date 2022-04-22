@@ -93,7 +93,6 @@
         Structure Of Computer Systems
         </a>
       </li>
-     
     </ul>
   </li>
   <li>:open_file_folder: Semester 6
