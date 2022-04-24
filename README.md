@@ -78,29 +78,6 @@
           Software Engineering
         </a>
       </li>
-      <li> :grey_question:
-        <a href="https://github.com/Pufcorina/Design-Patterns">
-          Design Patterns
-        </a>
-      </li>
-      <li> :scroll:
-          History of Computer Science
-        </a>
-      </li>
-      <li> :sos:
-        <a href="https://github.com/Pufcorina/Numerical-Calculus">
-          Numerical Calculus
-        </a>
-      </li>
-      <li> :mortar_board:
-          Preparation of Bachelor Thesis
-        </a>
-      </li>
-      <li> :shipit:
-        <a href="https://github.com/Pufcorina/Software-Systems-Verification-and-Validation">
-          Software Systems Verification and Validation
-        </a>
-      </li>
     </ul>
   </li>
 </ul>
