@@ -87,7 +87,12 @@
         <a href="https://github.com/ruxipop/UTCN/tree/main/Logic%20Programming">
         Logic Programming
         </a>
-      </li>                                                                        
+      </li>
+      <li>
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Image%20Processing"> 
+          :clubs:  Image Processing
+        </a>
+      </li>
     </ul>
   </li>
 </ul>                                                                                   
