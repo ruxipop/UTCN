@@ -83,6 +83,11 @@
           Computer Networks
         </a>
       </li>
+      <li> :iphone:
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Logic%20Programming">
+        Structure Of Computer Systems
+        </a>
+      </li>                                                                        
     </ul>
   </li>
 </ul>                                                                                   
