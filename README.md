@@ -69,13 +69,20 @@
   <li>:open_file_folder: Semester 6
     <ul>
       <li> :anger:
-        <a href="https://github.com/ruxipop/UTCN/tree/main/Software%20Engineering/Project">
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Software%20Engineering">
           Software Engineering
+        </a>
+      </li>
+      <li> :anger:
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Software%20Design">
+          Software Design
         </a>
       </li>
     </ul>
   </li>
 </ul>
 
+                                                                                          
+                                                                                          
 <br>
 <br>
