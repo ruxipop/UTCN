@@ -64,15 +64,15 @@
         Structure Of Computer Systems
         </a>
       </li>
-    </ul>
-  </li>
-  <li>:open_file_folder: Semester 6
-    <ul>
       <li> :anger:
         <a href="https://github.com/ruxipop/UTCN/tree/main/Software%20Engineering">
           Software Engineering
         </a>
       </li>
+    </ul>
+  </li>
+  <li>:open_file_folder: Semester 6
+    <ul>
       <li> :anger:
         <a href="https://github.com/ruxipop/UTCN/tree/main/Software%20Design">
           Software Design
