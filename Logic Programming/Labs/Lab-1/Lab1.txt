@@ -1,0 +1,145 @@
+Pop Ruxandra Maria-grupa 30236
+Laborator 1.
+
+Ex1.
+
+a. X e variabila        
+b. 'X' constanta 
+c.  _138 e variabila
+d. hello e constanta
+e. Hello e variabila
+f. 'Hello' constanta
+g. [a,b,c]  e lista
+h. [A,B,C] e lista 
+i. [Ana,are,'mere'] e lista
+
+Ex2. 
+
+var(Term) -- returneaza true daca Term e o variabila, false in caz contrar
+nonvar(Term) -- returneaza true daca Term nu e variabila,false in caz contrar
+number(Term) -- returneaza true daca Term e legat la un numar, false in caz contrar
+atom(Term) -- returneaza true daca Term e o constanta ,false in caz contrar
+atomic(Term) -- returneaza true daca Term e o constanta sau int ,false in caz contrar
+
+Ex3.
+
+a. true
+b.false
+c.false
+d.false
+e.X=1,Y=1
+f. false
+g.false
+h.ana
+i.X=Y,Y=ana
+j. X=b,Y=c
+k.X=Y,Y=2
+l.X=b(c,Z),Y=Z
+m.Right=tree(a,b,tree(c,d,e)
+n. X=s(g) ,Y=k
+o.X=father(X)
+p.false
+q. false
+r.A=1,B=2,C=3
+s.T=[1,f(x)|L2]
+t.L2=[]
+
+
+Ex4.
+
+4.1
+true,false,false,false,false,false
+
+4.2
+father(X,Y) :- man(X), parent(X,Y).
+
+4.3.
+
+% Predicatul woman/1
+woman(ana).
+woman(sara).
+woman(ema).
+woman(maria).
+woman(dorina).
+woman(irina).
+woman(carmen).
+
+% Predicatul man/1
+man(marius).
+man(sergiu).
+man(mihai).
+man(george).
+man(andrei).
+man(alex).
+
+% Predicatul parent/2
+parent(maria, ana). % maria este părintele anei
+parent(george, ana). % george este părintele anei
+parent(maria, andrei).
+parent(george, andrei). % ...
+parent(marius,maria).
+parent(dorina,maria).
+parent(mihai,george).
+parent(irina,george).
+parent(george,andrei).
+parent(maria,andrei).
+parent(irina,carmen).
+parent(mihai,carmen).
+parent(carmen,sara).
+parent(alex,sara).
+parent(carmen,ema).
+parent(alex,ema).
+
+4.4
+?- father(alex,X). =>X=sara,X=ema
+
+?- father(X,Y). => returneaza toate perechile posibile din arborele care indeblinesc conditia ca X este tatal lui Y
+X=marius,Y =maria
+X=mihai,Y=george
+X=mihai,Y=carmen
+X=george,Y=ana
+X=george,Y=andrei
+X=alex,Y=sara
+X=alex,Y=ema
+
+?- mother(dorina,maria). => true
+
+4.5
+sibling(carmen,george). =>true
+sibling(george,carmen). =>true
+
+sister(sara,ema).  =>true
+sister(ema,sara).  =>true
+sister(andrei,sara). => false
+
+aunt(andrei,ema). =>false
+
+
+4.6
+
+% Predicatul bother/2
+brother(X,Y) :- sibling(X,Y), man(X).
+
+% Predicatul uncle/2
+uncle(X,Y) :- brother(X,Z), parent(Z,Y).
+
+% Predicatul grandmother/2
+grandmother(X,Y) :- parent(X,Z),parent(Z,Y), woman(X).
+
+% Predicatul grandfather/2
+grandfather(X,Y) :- parent(X,Z),parent(Z,Y), man(X).
+
+4.7.
+trace,aunt(carmen,X). =>X=ana. (nici un fail)
+trace,grandmother(dorina, Y). =>Y=ana (nici un fail)
+trace,grandfather(X, ana). =>X=  marius            (sunt prezente mai multe fail-uri)
+
+4.8.
+% Predicatul ancestor/2
+%din ce am inteles din explicatia scria cred ca vine asa??
+ancestor(X,Y) :- parent(X,Y).
+ancestor(X,Y) :- parent(X,Z), ancestor(Z,Y).  
+
+
+
+
