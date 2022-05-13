@@ -78,11 +78,13 @@
           Software Design
         </a>
       </li>
+      <li> :anger:
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Computer%20Networks">
+          Computer Networks
+        </a>
+      </li>
     </ul>
   </li>
-</ul>
-
-                                                                                          
-                                                                                          
+</ul>                                                                                   
 <br>
 <br>
