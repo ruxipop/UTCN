@@ -85,7 +85,7 @@
       </li>
       <li> :iphone:
         <a href="https://github.com/ruxipop/UTCN/tree/main/Logic%20Programming">
-        Structure Of Computer Systems
+        Logic Programming
         </a>
       </li>                                                                        
     </ul>
