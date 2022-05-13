@@ -78,7 +78,7 @@
           Software Design
         </a>
       </li>
-      <li> :anger:
+      <li> :santa:
         <a href="https://github.com/ruxipop/UTCN/tree/main/Computer%20Networks">
           Computer Networks
         </a>
