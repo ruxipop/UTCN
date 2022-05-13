@@ -73,7 +73,7 @@
   </li>
   <li>:open_file_folder: Semester 6
     <ul>
-      <li> :anger:
+      <li> :nut_and_bolt:
         <a href="https://github.com/ruxipop/UTCN/tree/main/Software%20Design">
           Software Design
         </a>
