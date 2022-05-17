@@ -10,7 +10,7 @@
       </li>
        <li>
         <a href="https://github.com/ruxipop/UTCN/tree/main/Assembly%20Language%20%20Programming"> 
-          :clubs:  Digital Systems Design 
+          :clubs:  Assembly Language Programming
         </a>
       </li>
     </ul>
