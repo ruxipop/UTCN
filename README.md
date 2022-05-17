@@ -1,9 +1,15 @@
+
 # UTCN
 <ul>
   <li>:open_file_folder: Semester 2
     <ul>
       <li>
         <a href="https://github.com/ruxipop/UTCN/tree/main/Digital%20Systems%20Design"> 
+          :clubs:  Digital Systems Design 
+        </a>
+      </li>
+       <li>
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Assembly%20Language%20%20Programming"> 
           :clubs:  Digital Systems Design 
         </a>
       </li>
