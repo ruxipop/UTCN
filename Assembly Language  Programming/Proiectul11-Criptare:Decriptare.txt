@@ -1,0 +1,297 @@
+.386
+.model flat, stdcall
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;includem biblioteci, si declaram ce functii vrem sa importam
+includelib msvcrt.lib
+extern fseek: proc
+extern ftell: proc
+extern exit: proc
+extern printf: proc
+extern scanf: proc
+extern fprintf: proc
+extern fscanf: proc
+extern fopen: proc
+extern fclose: proc
+extern fwrite: proc
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;declaram simbolul start ca public - de acolo incepe executia
+public start
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;sectiunile programului, date, respectiv cod
+.data
+;aici declaram date
+fisier db 60 dup(0) 
+fisier2 db "C:\PLA\pr2.txt",0 ;fisierul in care va scrie programul textul criptat sau decriptat
+operatie db 2 dup(0)
+cheie db 8 dup(0)
+format db "%s",0
+format2 db "%c",0
+n dd 0
+a db 0
+mode1 db "r",0
+mode2 db "wb",0
+SEEK_END equ 2
+SEEK_SET equ 0
+.code
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+de PROC
+	;functie care determina care algoritm va fi folosit
+	push eax
+	mov al,operatie[0]
+	cmp al,49
+	je alg1
+		push 2
+		call citire
+	jmp term
+	alg1:
+		mov al,cheie[0]
+		sub al,48
+		mov cheie[0],al
+		push 1
+		call citire
+
+term:
+	pop eax	
+	ret
+de ENDP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+algoritm1 PROC
+	push ebx 
+	push ecx
+	push eax
+	
+	mov al,operatie[1]
+	cmp al,100
+	je decriptare1
+	cmp al,68
+	je decriptare1
+	cmp al,99
+	je criptare1
+	cmp al,67
+	je criptare1
+	jmp term1
+	
+	criptare1:
+	mov bl,a
+	not bl
+	inc bl
+	
+	mov cl,cheie[0]
+	ror bl,cl
+	mov a,bl
+	jmp term1
+	
+	decriptare1:
+	mov bl,a
+	mov cl,cheie[0]
+	rol bl,cl
+	
+	dec bl
+	not bl
+	mov a,bl
+
+term1:
+	pop eax	
+	pop ecx
+	pop ebx
+	ret
+algoritm1 ENDP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+algoritm2 PROC
+	push ebx 
+	push ecx
+	push eax
+	
+	mov ebx,0
+	mov al,operatie[1]
+	cmp al,100
+	je decriptare2
+	cmp al,68
+	je decriptare2
+	cmp al,99
+	je criptare2
+	cmp al,67
+	je criptare2
+	jmp term2
+	
+	criptare2:
+	
+	mov al,a
+	not al
+	cmp edx,8
+	jae term2
+	xor al,cheie[edx]
+	mov a,al
+	jmp term2
+	
+	decriptare2:
+	
+	mov al,a
+	cmp edx,8
+	jae cont1
+	xor al,cheie[edx]
+	cont1:
+	not al
+	mov a,al
+
+term2:
+	pop eax	
+	pop ecx
+	pop ebx
+	ret
+algoritm2 ENDP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+lungime_fisier PROC
+	push eax
+	
+	push SEEK_END
+	push 0
+	push esi
+	call fseek
+	add esp, 12
+	
+	push esi
+	call ftell
+	add esp,4
+	mov n, eax
+	
+	pop eax
+	ret
+lungime_fisier ENDP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+citire PROC
+	;functie pentru parcurgerea fisierului, si pentru citirea si afisarea caracterelor  
+	push EBP
+	mov EBP, ESP
+	sub ESP, 12
+	push esi
+	push edi
+	push ebx
+	push ecx
+	push eax
+	push edx
+	
+	push offset mode1
+	push offset fisier
+	call fopen
+	add esp, 8
+	mov esi, eax
+
+	push offset mode2
+	push offset fisier2
+	call fopen
+	add esp, 8
+	mov edi, eax	
+	
+	call lungime_fisier
+	
+	mov edx,0
+	mov ebx,0
+	mov ecx,[ebp+8]
+	cmp ecx,2 ;aici se decide care loop va fi folosit: loop1 pentru algoritmul 1 si loop2 pentru algoritmul 2
+	je loop2
+	
+	loop1:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	push SEEK_SET
+	push ebx
+	push esi
+	call fseek
+	add esp, 12
+	
+	push offset a
+	push offset format2 
+	push esi
+	call fscanf
+	add esp, 12
+	
+	call algoritm1
+	
+	push edi
+	push 1
+	push 1
+	push offset a
+	call fwrite
+	add ESP, 16
+	
+	inc ebx
+	cmp ebx,n
+	jb loop1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	jmp terminare
+	
+	loop2:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	push SEEK_SET
+	push ebx
+	push esi
+	call fseek
+	add esp, 12
+	
+	push offset a
+	push offset format2 
+	push esi
+	call fscanf
+	add esp, 12
+	 
+	cmp edx,10
+	jb cont
+	mov edx,0
+	
+	cont:
+	call algoritm2
+
+	push edi
+	push 1
+	push 1
+	push offset a
+	call fwrite
+	add ESP, 16
+	
+	inc edx 
+	inc ebx
+	cmp ebx,n
+	jb loop2
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	terminare:
+	push edi
+	call fclose
+	add esp, 4
+	
+	push esi
+	call fclose
+	add esp, 4
+	
+	pop edx
+	pop eax
+	pop ecx
+	pop ebx
+	pop edi
+	pop esi
+	mov ESP, EBP
+	pop EBP
+	ret 4
+citire ENDP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+start:
+	;argumentele care trebuie citite: 1. calea absoluta catre fisier, 2. numarul algoritmului(1 sau 2) si operatia(c pentru criptare sau d pentru decriptare), 3. cheia de criptare
+	push offset fisier
+	push offset format
+	call scanf
+	add esp,8
+
+	push offset operatie
+	push offset format
+	call scanf
+	add esp,8
+	
+	push offset cheie
+	push offset format
+	call scanf
+	add esp,8
+	
+	call de
+	
+	push 0
+	call exit
+end start
