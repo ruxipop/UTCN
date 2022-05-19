@@ -1,0 +1,10 @@
+connection/ConnectionFactory.class
+Main.class
+dao/AbstractDAO.class
+dao/MovieDAO.class
+dao/UserDAO.class
+model/User.class
+UserBLL.class
+Server.class
+ClientThread.class
+model/Movie.class
