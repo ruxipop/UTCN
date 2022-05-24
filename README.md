@@ -101,7 +101,7 @@
       </li>
       <li>
         <a href="https://github.com/ruxipop/UTCN/tree/main/Intelligent%20Systems"> 
-          :clubs:  Image Processing
+          :clubs:  Intelligent Systems
         </a>
       </li>
     </ul>
