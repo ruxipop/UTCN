@@ -99,6 +99,11 @@
           :clubs:  Image Processing
         </a>
       </li>
+      <li>
+        <a href="https://github.com/ruxipop/UTCN/tree/main/Intelligent%20Systems"> 
+          :clubs:  Image Processing
+        </a>
+      </li>
     </ul>
   </li>
 </ul>                                                                                   
