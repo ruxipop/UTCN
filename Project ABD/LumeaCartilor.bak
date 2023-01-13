@@ -1,0 +1,2 @@
+untitled:SQLQuery_1 {"typeId":""}
+BACKUP DATABASE [LumeaCartilor] TO  DISK = N'/var/opt/mssql/data/LumeaCartilor-20221219-18-35-2.bak' WITH NOFORMAT, NOINIT,  NAME = N'LumeaCartilor-Full-2022-12-19T16:35:02', NOSKIP, REWIND, NOUNLOAD,  STATS = 10
