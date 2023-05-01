@@ -1,0 +1,27 @@
+<div class="booking-form">
+    <h2>Select a date and time for your visit</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" >
+        <div class="form-group"  >
+            <label for="date">Date:</label>
+            <div class="date-carousel">
+                <div class="card-wrapper">
+                    <div class="card" *ngFor="let date of dates" [class.active]="date === selectedDate" (click)="selectDate(date)">
+                        <div class="card-day">{{ date | date:'EEE' }}</div>
+                        <div class="card-date">{{ date | date:'d' }}</div>
+                        <div class="card-month">{{ date | date:'MMM' }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="time">Time:</label>
+            <select [(ngModel)]="selectedTime" formControlName="time">
+                <option *ngFor="let time of times" [value]="time">{{ time }}</option>
+            </select>
+
+        </div>
+        <button type="submit">Book Appointment</button>
+    </form>
+</div>
+
+

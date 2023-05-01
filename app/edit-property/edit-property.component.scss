@@ -1,0 +1,199 @@
+
+.contact-form {
+
+  background-color: #f7f7f7 !important;
+  height: 600px !important;
+  flex-basis: 65% !important;
+  padding: 20px !important;
+  margin-top: 100px !important;
+
+  hr {
+    border-color: #FFDFDF !important;
+    border-width: 4px !important; /* înălțimea dorită */
+
+    margin-bottom: 40px !important;
+  }
+
+  p {
+    text-align: center !important;
+    margin-bottom: 30px !important;
+  }
+
+}
+
+
+.form-group {
+  margin-bottom: -10px !important;
+  flex-basis: 48%;
+  background-color: #f7f7f7 !important;
+
+}
+
+.form-group label, .form-group input {
+  width: 50%;
+}
+
+label {
+  margin-bottom: 10px;
+  flex-basis: 50%;
+}
+
+
+button[type="submit"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  right: 0;
+  width: 20% !important;
+  background: #FFDFDF;
+
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+button[type="submit"]:hover {
+  background-color: #999999;
+  color: white;
+}
+
+.no-prop {
+  background-color: #FFDFDF !important;
+  padding: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 20% !important;
+  width: 70% !important;
+
+  i {
+    font-size: 30px;
+    color: #999999;
+    font-weight: bold;
+  }
+}
+
+
+.contact-container {
+  height: 550px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 80px !important;
+
+  marg.container-img {
+    text-align: center;
+  }
+}
+
+.text-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%)
+}
+
+.image-design {
+  width: 100%;
+  height: 600px;
+}
+
+.contact-container {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 100px !important;
+}
+
+.contact-info {
+  height: 600px !important;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-basis: 30% !important;
+  background-color: #f7f7f7 !important;
+  padding: 40px !important;
+  margin-right: 20px;
+  margin-top: 20px !important;
+
+  .contact-text {
+    margin-top: 100px !important;
+    margin-left: 40px !important;
+    width: 40% !important;
+
+    img {
+      width: 100% !important;
+    }
+  }
+
+  i {
+    color: #555555 !important;
+    font-weight: bold !important;
+    font-size: 15px !important;
+
+  }
+
+  p {
+    margin-bottom: 20px !important;
+  }
+}
+
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+select {
+  background-color: #ffffff; /* sau numele de cod al culorii: white */
+}
+
+
+input[type="text"],
+input[type="number"],
+input,
+textarea {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  flex-basis: 50%;
+}
+
+input[type="text"]:first-of-type {
+  margin-right: 10px;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-group {
+  flex-basis: 48%;
+
+  select {
+    height: 45px !important;
+    width: 100% !important;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    flex-basis: 50%;
+    background-color: white;
+    font-size: 20px !important;
+  }
+}
+
+.form-group label, .form-group input {
+  width: 100%;
+}
+

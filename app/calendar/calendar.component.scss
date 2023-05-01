@@ -1,0 +1,198 @@
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.calendar {
+  display: inline-block;
+  border: 2px solid #D9D9D9;
+  padding: 10px;
+  font-family: sans-serif;
+  user-select: none;
+  height: 450px;
+  width: 400px;
+  margin-left: 150px;
+  order: 1;
+  margin-bottom: 3% !important;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .prev, .next {
+      cursor: pointer;
+    }
+  }
+
+  .days {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+    .day {
+      width: calc(100% / 7);
+      text-align: center;
+    }
+  }
+
+  .dates {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .date {
+      width: calc(100% / 7);
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        background-color: #ddd;
+      }
+
+      .appointments {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border: 1px solid black;
+        padding: 5px;
+        max-height: 200px;
+        overflow: auto;
+
+        .appointment {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 400px;
+
+  .header {
+    color: white;
+    font-size: 50px !important;
+    align-self: center;
+    //margin-top: -300px;
+  }
+
+
+  .appointments {
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 5px;
+  }
+}
+
+
+button {
+  margin-top: 10px;
+  font-size: 1.2em;
+  padding: 5px 10px;
+}
+
+
+.weekdays {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+
+  .day {
+    width: calc(100% / 7);
+    text-align: center;
+    margin-bottom: 5px;
+  }
+}
+
+
+.close-btn {
+  background: none !important;
+  border: none !important;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1.2em !important;
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.calendar-container {
+  position: relative;
+}
+
+.stats-container {
+  position: absolute;
+  top: 0;
+  right: 120px !important;
+  margin: 10px;
+
+  width: 400px;
+  height: 400px;
+
+}
+
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  right: 0;
+  width: 20%;
+  background: #FFDFDF;
+
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+button:hover {
+  background-color: #999999;
+  color: white;
+}
+
+.butn {
+  width: 100% !important;
+}
+
+.header h2 {
+  font-size: 24px; /* sau orice dimensiune dorită */
+}
+
+
+.card {
+  text-align: center !important;
+  width: 300px !important;
+  margin-bottom: 10px !important;
+}
+
+.no-appointments {
+  color: white;
+  font-size: 40px !important;
+}

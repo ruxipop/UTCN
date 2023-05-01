@@ -1,0 +1,25 @@
+.modal-container {
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  background-color: #f7f7f7 !important;
+  overflow: auto;
+  justify-content: center;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+}

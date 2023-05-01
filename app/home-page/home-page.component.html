@@ -1,0 +1,55 @@
+<div class="container-img">
+    <img alt="My Image" src="assets/imgs/london.jpg"
+         style=" width:100%">
+    <p class="text-img">
+        FIND YOUR HOME WITH US
+    </p>
+</div>
+<h2>Recently Added</h2>
+<hr>
+
+<div class="card-container">
+    <div class="element">
+        <div *ngFor="let property of newProperties" class="card">
+            <img (click)="openPropertyPage(property.id)" [src]="property.images[0]" alt="Card image">
+            <div class="card-content">
+                <h1>£{{property.price.split(".")[0]}}</h1>
+                <span class="text-sub1">{{property.address.split(",")[0]}}</span>
+                <span class="text-sub2">-{{property.nb_bed}}bds, {{property.nb_bath}}bath</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-text">
+    <div class="column left-column">
+        <p class="title-left">We can help you to find luxurious and beautiful properties in your local area</p>
+
+        <img alt="Imagine stanga" src="assets/imgs/ok.png">
+    </div>
+    <div class="divider"></div>
+    <div class="column right-column">
+        <p class="title-right">Be the first through the door of newly listed properties</p>
+        <div class="subtitle ">
+            <p><i class="fa fa-check"></i>First to see the latest properties</p>
+            <p><i class="fa fa-check"></i>Get called first about new homes</p>
+        </div>
+        <button (click)="goToRegisterPage()" class="button-subtitle">Register in under 30 seconds</button>
+
+    </div>
+</div>
+
+<div class="text-lg-start  footer ">
+    <div class="footer-overlay ">
+        <p>Welcome to our home !</p>
+    </div>
+    <div class="video-container">
+        <video controls>
+            <source src="{{videoSource}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+</div>
+

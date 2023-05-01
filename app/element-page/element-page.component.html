@@ -1,0 +1,128 @@
+<div class="carousel-container">
+    <div [style.background-image]="'url(' + stringImages[currentSlide] + ')'" class="carousel-image"></div>
+    <div class="carousel-controls">
+        <div (click)="prevSlide()" class="carousel-button-up">
+            <div class="carousel-button-arrow-up"></div>
+        </div>
+        <div (click)="nextSlide()" class="carousel-button-down">
+            <div class="carousel-button-arrow-down"></div>
+        </div>
+    </div>
+    <!-- Adaugam div-ul pentru patratul roz -->
+    <div class="container">
+        <div class="pink-square">
+            <h2>Contact an agent</h2>
+            <div class="columns">
+                <div class="left-column">
+                    <img alt="Poza" src="assets/imgs/agent.jpeg">
+                </div>
+                <div class="right-column">
+                    <h3>Joe Mallon</h3>
+                    <p>London</p>
+                    <p>+44 (0) 1780 484 694</p>
+                </div>
+            </div>
+            <div class="button-container">
+                <button (click)="openDialog()" *ngIf="!isAdmin()">Book Appointment</button>
+                <button (click)="openDialogCalendar('section2')" *ngIf="isAdmin()">Appointments</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Nume + pret-->
+<div class="container-text">
+    <div class="column-text column-left">
+        <div *ngIf="currentProperty " class="row-text left-title">
+            {{this.currentProperty.name }}
+        </div>
+        <div class="row-text">
+            <i aria-hidden="true" class="fa fa-map"></i>
+            <div class="left-subtitle">
+                {{this.currentProperty.address }}
+            </div>
+        </div>
+    </div>
+    <div class="column-text column-right">
+        <div class="row-text right-title">
+            Guide price
+        </div>
+        <div class="row-text right-subtitle">
+            £{{this.currentProperty.price.split('.')[0] }}
+        </div>
+    </div>
+
+</div>
+<hr>
+
+<div class="component">
+    <p class="text">
+        {{this.currentProperty.description }}
+
+    </p>
+</div>
+
+
+<div class="container-rectangle">
+    <div class="left-column-rectangle">
+        <button (click)="openModal('floorplan')" *ngIf="!isNullFloorplan()" class="rectangle first ">
+            <i class="button-text">
+                Floorplan</i>
+        </button>
+        <button (click)="openModal('epc')" class="rectangle first">
+            <i class="button-text">EPC
+            </i>
+        </button>
+
+    </div>
+    <div class="right-column-rectangle">
+        <div class="rectangle second">
+            <div class="row-rec">
+                <div class="col-rec">
+                    <div class="row-rec">
+
+                        <div class="col-rec">Lot Area:</div>
+                        <div class="col-rec second-rec">{{this.currentProperty.lot_area.split('.')[0]}} Lft</div>
+                        <div class="col-rec col-second inline-col" style="">Year Build:</div>
+                        <div class="col-rec second-rec">{{this.currentProperty.year_build}}</div>
+
+                    </div>
+                    <div class="row-rec">
+
+                        <div class="col-rec">Bath Rooms:</div>
+                        <div class="col-rec second-rec">{{this.currentProperty.nb_bath}}</div>
+                        <div class="col-rec col-second inline-col" style="">Garage:</div>
+                        <div class="col-rec second-rec">{{this.currentProperty.nb_garage}}</div>
+
+
+                    </div>
+                    <div class="row-rec">
+                        <div class="col-rec ">Bed rooms:</div>
+                        <div class="col-rec second-rec">{{this.currentProperty.nb_bed}}</div>
+                        <div class="col-rec col-second inline-col" style="">Garden:</div>
+                        <div class="col-rec second-rec">{{ currentProperty.garden  }}</div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-parent">
+    <div class="modal" id="modal" style="display: none;">
+        <button (click)="closeModal()" class="close-button">X</button>
+        <img [src]="whichImage" alt="Image">
+    </div>
+</div>
+
+
+<div *ngIf="opern">
+    <hr>
+    <h1 id="section2" style="margin-left: 100px;padding: 20px">Appointmets</h1>
+    <app-calendar [currentProperty_id]="currentId"></app-calendar>
+    <hr style="margin-bottom: 100px;">
+</div>

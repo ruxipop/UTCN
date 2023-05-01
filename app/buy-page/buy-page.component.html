@@ -1,0 +1,73 @@
+<div class="top-bar">
+    <div class="buttons">
+        <button (click)="getResidential()"
+                [ngClass]="{'pink-button': isResidentialSelected, 'grey-button': !isResidentialSelected}">Residential
+        </button>
+        <button (click)="getCommercial()"
+                [ngClass]="{'pink-button': isCommercialSelected, 'grey-button': !isCommercialSelected}">Commercial
+        </button>
+
+    </div>
+    <button (click)="toggleFilter()" class="filter-button"><i class="fa fa-filter buton-icon "></i>
+        Filter
+        <div class="square">
+            <span class="number">{{selectedCheckboxes}}</span>
+        </div>
+    </button>
+
+
+    <div class="filter-menu">
+        <div class="filter-group">
+            <h3>Types</h3>
+
+            <div *ngIf="!isCommercialSelected">
+                <label><input name="types" type="checkbox" value="House">
+                    <i>House</i>
+                </label>
+                <label><input name="types" type="checkbox" value="Apartment">
+                    <i>Apartment</i></label>
+                <label><input name="types" type="checkbox" value="Studio">
+                    <i>Studio</i></label>
+            </div>
+            <div *ngIf="!isResidentialSelected">
+                <label><input name="types" type="checkbox" value="Office"> <i>Office</i></label>
+                <label><input name="types" type="checkbox" value="Hotel"> <i>Hotel</i></label>
+                <label><input name="types" type="checkbox" value="Space"> <i>Commercial Space</i></label>
+            </div>
+
+        </div>
+        <button (click)="applyFilters()" class="apply-button">Apply</button>
+    </div>
+
+
+</div>
+
+
+<div class="container-page">
+    <h1 class="title"> {{this.properties.length}} Results</h1>
+    <div class="images ">
+        <div *ngFor="let property of properties" class="card" id="{{property.id}}">
+            <img (click)="openPropertyPage(property.id)" [src]="property.images[0]" alt="Image">
+            <div class="card-content">
+                <h1>£{{property.price.split(".")[0]}}</h1>
+                <span class="text-sub1">{{property.address.split(",")[0]}}</span>
+                <span class="text-sub2">-{{property.nb_bed}}bds, {{property.nb_bath}}bath</span>
+                <i (click)="addToFav(property)" *ngIf="!isUserLogged() && !isAdmin()" [ngClass]="{'selected': isFav(property.id)}"
+                   class="fa fa-heart fav fa2"
+                   id="{{property}}">
+                </i>
+                <i (click)="openDialog(property.id)" *ngIf="!isUserLogged() && isAdmin()" class="fa fa-pencil fav fa2"
+                   id="{{property}}" style="right:20px"
+                >
+                </i>
+
+                <i (click)="deleteProperty(property.id)" *ngIf="!isUserLogged() && isAdmin()" class="fa fa-trash fav fa2"
+                   id="{{property}}">
+                </i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

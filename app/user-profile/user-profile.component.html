@@ -1,0 +1,82 @@
+<div class="contact-container">
+    <div class="contact-info">
+        <div>
+            <i>Contry: {{ this.Country}}, City: {{this.City}}     </i>
+        </div>
+
+
+        <button (click)="showContactForm()" class="me-button">About me</button>
+        <button (click)="showImageGallery()" *ngIf="!this.isAdmin">Wish list</button>
+        <button (click)="showImageGallery()" *ngIf="this.isAdmin">Add property</button>
+        <button (click)="logout()">Logout</button>
+    </div>
+
+
+    <div *ngIf="isContactFormVisible" class="contact-form">
+        <h2>About me</h2>
+        <hr>
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input [(ngModel)]="user.first_name" class="form-control" formControlName="first_name" id="first_name" name="first_name"
+                       type="text">
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input [(ngModel)]="user.last_name" class="form-control" formControlName="last_name" id="last_name" name="last_name"
+                       type="text">
+
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input [(ngModel)]="user.username" class="form-control" formControlName="username" id="username" name="username"
+                       readonly type="text">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input [(ngModel)]="user.email" class="form-control" formControlName="email" id="email" name="email" readonly
+                       type="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input [(ngModel)]="user.password" class="form-control" formControlName="password" id="password" name="password"
+                       type="password">
+            </div>
+            <button type="submit">SAVE</button>
+        </form>
+    </div>
+
+
+    <div *ngIf="isImageGalleryVisible" class="image-container"
+         style="display: flex; align-items: center; justify-content: center;">
+        <div *ngIf="favProperties.length===0 && !this.isAdmin" class="no-prop">
+            <i>
+                You have not saved any property!
+            </i>
+        </div>
+        <div *ngIf="this.isAdmin" class="add-p">
+            <h2>Add property</h2>
+            <hr>
+            <app-add-property-page></app-add-property-page>
+        </div>
+
+        <div *ngFor="let property of favProperties" class="card" id="{{property.id}}">
+            <img (click)="openPropertyPage(property.id)" [src]="getPhoto(property.id)" alt="Image">
+            <div class="card-content">
+                <h1>£{{property.price.split(".")[0]}}</h1>
+                <span class="text-sub1">{{property.address.split(",")[0]}}</span>
+                <span class="text-sub2">-{{property.nb_bed}}bds, {{property.nb_bath}}bath</span>
+                <i (click)="addToFav(property)" class="fa fa-trash fav fa2"
+                   id="{{property}}">
+                </i>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

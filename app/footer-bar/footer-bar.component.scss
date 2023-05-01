@@ -1,0 +1,89 @@
+.c {
+  padding: 10px 10px;
+  color: white;
+
+}
+
+.fa-d {
+  color: white;
+  width: 50px;
+}
+
+
+.text-footer {
+  margin-top: 70px;
+  left: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.footer {
+
+  position: relative;
+  background-color: #999999;
+  z-index: 1;
+}
+
+.footer-overlay {
+  position: absolute;
+  top: -40px;
+  left: 15px;
+  width: 75%;
+  height: 25%;
+  background-color: #FFDFDF;
+  border-radius: 20px;
+  z-index: 3;
+}
+
+.fa-cog {
+  color: white;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.row {
+  margin: 10px 0;
+}
+
+.row-size-1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 1px 14px;
+}
+
+.row-size-2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.row-1 {
+  margin-bottom: 10px;
+  margin-left: 30px;
+  text-align: center;
+}
+
+.row-2 {
+  //margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 40px;
+
+
+}
+
+.text-large {
+  font-size: 40px;
+  font-weight: bold;
+}

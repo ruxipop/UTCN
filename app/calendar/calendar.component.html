@@ -1,0 +1,48 @@
+<div class="calendar-container">
+    <div class="stats-container">
+        <button (click)="openDialogStatistics()" class="butn">View Statistics</button>
+
+        <div *ngIf="showStatistics" class="statistics-container">
+            <app-statistics [property_id]="currentProperty_id"></app-statistics>
+        </div>
+    </div>
+
+
+    <div class="calendar">
+        <div class="header">
+            <button (click)="prevMonth()">Prev</button>
+            <h2>{{ currentMonth }}</h2>
+            <button (click)="nextMonth()">Next</button>
+        </div>
+
+        <div class="weekdays">
+            <div *ngFor="let day of days">{{ day }}</div>
+        </div>
+
+        <div class="dates">
+            <div (click)="date ? selectDate(date) : null" *ngFor="let date of dates" [ngClass]="{ 'selected': date === selectedDate }"
+                 class="date">
+                {{ date?.getDate() }}
+                <!--            <div class="appointment-count" *ngIf="date">-->
+                <!--                {{ appointments.length }}-->
+                <!--            </div>-->
+            </div>
+        </div>
+
+        <div *ngIf="selectedDate" class="popup">
+            <div class="header">{{ selectedDate.toLocaleDateString() }}</div>
+            <div class="appointments">
+                <div *ngFor="let appointment of getAppointmentsForSelectedDate()" class="appointment">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">Appointment at {{ transformInDate(appointment.start_date) }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="getAppointmentsForSelectedDate().length === 0" class="no-appointments">No appointments</div>
+            </div>
+            <button (click)="selectedDate = null" class="close-btn">X</button>
+        </div>
+
+    </div>
+</div>

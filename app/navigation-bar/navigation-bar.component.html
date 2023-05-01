@@ -1,0 +1,38 @@
+<div class="topnav" id="myTopnav">
+    <b href="#home">Hamlet.</b>
+    <a class="v1" href="home"></a>
+    <a *ngIf="isLoggedIn" class="v" routerLink="/user-profile-page" style="color: #999999;">
+        <i class="fa fa-user fa-lg"></i>
+    </a>
+    <a *ngIf="!isLoggedIn" class="v" routerLink="/login-page" style="color: #999999;">
+        <i>Login</i>
+    </a>
+
+
+    <a (click)="contactButton()">Contact</a>
+    <a (click)="aboutButton()">About</a>
+    <a (click)="goToRent()" (mouseenter)="onRentButtonHover()" (mouseleave)="onRentButtonLeave()"
+       [ngClass]="{'active': showRentContainer}">Rent</a>
+
+    <a (click)="goToBuy()" (mouseenter)="onBuyButtonHover()" (mouseleave)="onBuyButtonLeave()"
+       [ngClass]="{'active': showContainer}">Buy</a>
+
+    <a routerLink="/home">Home</a>
+
+    <a (click)="myFunction()" class="icon" href="javascript:void(0);" style="font-size:15px;">&#9776;</a>
+</div>
+
+<div (mouseenter)="onSubmenuHover()" (mouseleave)="onSubmenuLeave()" *ngIf="showContainer" class="submenu">
+    <app-navigation-bar-submenu [url]="'buy-page'"></app-navigation-bar-submenu>
+</div>
+
+<div (mouseenter)="onSubmenuHover()" (mouseleave)="onSubmenuLeave()" *ngIf="showRentContainer" class="submenu">
+    <app-navigation-bar-submenu [url]="'rent-page'"></app-navigation-bar-submenu>
+</div>
+
+
+
+
+
+
+

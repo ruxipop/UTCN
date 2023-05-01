@@ -1,0 +1,90 @@
+<div class="container-img">
+    <img alt="My Image" src="assets/imgs/london.jpg"
+         style=" width:100%">
+    <p class="text-img">
+        ALL ABOUT HAMLET
+    </p>
+</div>
+
+<div class="container-chenar">
+    <div class="chenar-text">
+        <h1>Mission</h1>
+        <p>“To create the best environment, to empower the best people,
+            to provide the best possible property management service”</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h2>Making the difference</h2>
+        <p>We know what it takes to deliver success for our clients. It’s really quite simple: it’s a combination of
+            what we do and how we do it. We constantly strive to do things better and to go the extra mile for our
+            clients. We aim to exceed our clients' expectations.</p>
+    </div>
+    <div class="col">
+        <h2>Experts</h2>
+        <p>We understand the needs of both occupiers and investors and have in-house experts who deal with every aspect
+            of the London property market. We have 12 offices in Prime Central London handling enquiries from local,
+            national and overseas buyers and tenants.</p>
+    </div>
+    <div class="col">
+        <h2>Altogether better</h2>
+        <p>Hamlet offers a comprehensive range of property services. We are exceptionally strong in residential sales
+            and lettings across London; not only in new homes, but also in corporate and international lettings and
+            relocation.</p>
+    </div>
+</div>
+
+
+<div class="container">
+    <h2 class="title">Meet the team</h2>
+    <div class="row-team">
+        <div class="column-team">
+            <div class="item">
+                <img alt="Poza 1" src="assets/imgs/agent.jpeg">
+                <h3>Joe Mallon</h3>
+            </div>
+            <div class="item">
+                <img alt="Poza 2" src="assets/imgs/agent2.jpeg">
+                <h3>Maris Oga</h3>
+            </div>
+        </div>
+        <div class="column-team">
+            <div class="item">
+                <img alt="Poza 3" src="assets/imgs/agent6.jpeg">
+                <h3>Kathrin Digwa</h3>
+            </div>
+            <div class="item">
+                <img alt="Poza 4" src="assets/imgs/agent3.jpeg">
+                <h3>James Farrar</h3>
+            </div>
+        </div>
+        <div class="column-team">
+            <div class="item">
+                <img alt="Poza 5" src="assets/imgs/agent4.jpeg">
+                <h3>Nancy Twomey</h3>
+            </div>
+            <div class="item">
+                <img alt="Poza 6" src="assets/imgs/agent5.jpeg">
+                <h3>Catherine Adams</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="carousel-container" style="background-image: url('assets/imgs/opi.png')">
+    <div class="carousel-header">
+        <h2 class="carousel-title">Our Customers Say</h2>
+        <hr class="carousel-line">
+    </div>
+
+    <div class="carousel-dots">
+        <span (click)="changeText(i)" *ngFor="let text of texts; let i = index" [class.active]="i === currentIndex"
+              class="dot"></span>
+    </div>
+
+    <div class="carousel-text">
+        <p>{{ currentText }}</p>
+    </div>
+</div>

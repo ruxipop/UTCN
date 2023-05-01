@@ -1,0 +1,83 @@
+<div class="contact-form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input [(ngModel)]="currentProperty.name" class="form-control" formControlName="name" id="name" name="name"
+                   type="text">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input [(ngModel)]="currentProperty.address" class="form-control" formControlName="address" id="address" name="address"
+                   type="text">
+
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input [(ngModel)]="currentProperty.description" class="form-control" formControlName="description" id="description" name="description"
+                   type="text">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input [(ngModel)]="currentProperty.price" class="form-control" formControlName="price" id="price" name="price"
+                   type="text">
+        </div>
+        <div class="form-group">
+            <label for="lot_area">Lot Area</label>
+            <input [(ngModel)]="currentProperty.lot_area" class="form-control" formControlName="lot_area" id="lot_area" name="lot_area"
+                   type="text">
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="nb_bath">Nb. of bathroom</label>
+                <input [(ngModel)]="currentProperty.nb_bath" formControlName=nb_bath id="nb_bath" name="nb_bath"
+                       type="number">
+            </div>
+            <div class="form-group">
+                <label for="nb_bed">Nb. of bedroom</label>
+                <input [(ngModel)]="currentProperty.nb_bed" formControlName=nb_bed id="nb_bed" name="nb_bed"
+                       type="number">
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="nb_garage">Nb. of garage</label>
+                <input [(ngModel)]="currentProperty.nb_garage" formControlName=nb_garage id="nb_garage" name="nb_garage"
+                       type="number">
+            </div>
+            <div class="form-group">
+                <label for="year">Year build</label>
+                <input [(ngModel)]="currentProperty.year_build" formControlName=year_build id="year" max="2023" min="1900" name="year"
+                       type="number">
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="for">For:</label>
+                <select [(ngModel)]="currentProperty.isBuy" formControlName=isBuy id="for" name="for">
+                    <option value="false">Buy</option>
+                    <option value="true">Rent</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="type">Type:</label>
+                <select [(ngModel)]="currentProperty.type" formControlName=type id="type" name="type">
+                    <option value="House">House</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Studio">Studio</option>
+                    <option value="Ofice">Office</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Space">Space</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">EDIT</button>
+    </form>
+</div>
+
+
+<!--</div>-->

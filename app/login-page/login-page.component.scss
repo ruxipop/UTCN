@@ -1,0 +1,140 @@
+/* register.component.scss */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+.login-container {
+  border-radius: 10px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  margin: 150px auto 0; /* Aliniază containerul la mijlocul paginii și adaugă margin-top */
+  background-color: #8B8B8B;
+  width: 60%; /* Setează latimea containerului */
+  max-width: 600px; /* Setează o latime maxima pentru container */
+  //padding: 40px!important;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-group {
+
+      display: flex;
+      position: relative;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 140%;
+      margin-bottom: 20px;
+
+
+      input {
+        flex: 1;
+        padding: 0 0 0 4.5rem;
+        font-size: 20px !important;
+      }
+    }
+
+    .name-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 20px;
+
+    }
+
+    button {
+      margin-top: 20px;
+    }
+
+    .login-button-group {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 20px;
+      color: white;
+      margin-left: 100px !important;
+      font-size: 20px !important;
+
+      p {
+        font-size: 1rem !important;
+        margin-left: -105px !important;
+      }
+
+      button {
+        //margin-left: 30px;
+      }
+    }
+  }
+}
+
+.register-link {
+  align-self: flex-end;
+  margin-left: -220px !important;
+
+  a {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-style: italic;
+    font-size: 1rem !important;
+  }
+
+}
+
+
+.login-btn {
+  background-color: white !important;
+  color: #8B8B8B !important;
+  padding: 10px 20px !important;
+  border: none !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  font-size: 26px !important;
+  margin-top: -2px !important;
+}
+
+.input-icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 100%;
+  pointer-events: none;
+  color: #555;
+
+  border-right: 1px solid #8B8B8B;
+}
+
+.input-icon i {
+  color: #8B8B8B;
+  font-size: 20px;
+
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+
+.modal-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+.error-message {
+  color: pink;
+  font-size: 20px;
+  margin-top: 5px;
+  font-weight: bold;
+}
